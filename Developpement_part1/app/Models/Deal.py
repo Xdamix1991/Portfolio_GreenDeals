@@ -1,5 +1,7 @@
-from app import db
 from app.Models.Model_base import ModelBase
+
+
+from app.db_extension import db
 
 class Deal(ModelBase):
     __tablename__ = 'deals'
@@ -10,7 +12,7 @@ class Deal(ModelBase):
     description = db.Column(db.String(2048), nullable=False)
     price = db.Column(db.Float(10), nullable=False)
     location = db.Column(db.String(256), nullable=False)
-    hello = db.Column(db.String(256), nullable=False)
+    categorie = db.Column(db.String(256), nullable=False)
     reparability = db.Column(db.Float(3), nullable=True)
     author = db.relationship('User', back_populates='deals')
     comment = db.relationship('Comment', back_populates='deal', cascade="all, delete-orphan")

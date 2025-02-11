@@ -1,6 +1,8 @@
 import uuid
 from datetime import datetime, timezone
-from app import db
+
+
+from app.db_extension import db
 
 class ModelBase(db.Model) :
     __abstract__ = True

@@ -1,6 +1,6 @@
-from app import db
-
 from app.Models.Model_base import ModelBase
+
+from app.db_extension import db
 
 class Comment(ModelBase):
     __tablename__ = 'comments'
