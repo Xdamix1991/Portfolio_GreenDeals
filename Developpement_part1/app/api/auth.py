@@ -21,7 +21,7 @@ class AuthResource(Resource):
     @api.response(401,'wrong input')
 
     def post(self):
-        data= api.payload
+        data = api.payload
         print(data)
         email = data['email']
         password = data['pass_word']
@@ -43,6 +43,8 @@ class ProtectedResource(Resource):
     def get(self):
         user = get_jwt_identity()
         if user['is_admin'] is True:
-            return {"message": "hello user admin"}
+            return { "id": user['id'],
+                "message": "hello user admin"}
         if user['is_admin'] is False:
-            return {"hello user": user.id}, 200
+            return {"id": user['id'],
+                "hello user": user['id']}, 200

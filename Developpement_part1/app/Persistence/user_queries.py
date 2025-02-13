@@ -30,7 +30,11 @@ class facade_user():
     def get_all_users(self):
         return self.user_repos.get_all()
 
-    def update_user(self, user_id, **user_data):
+    def update_user(self, user_id, user_data):
+        from app import bcrypt
+        new_password = user_data['pass_word']
+        hashed_password = bcrypt.generate_password_hash(new_password)
+        user_data['pass_word'] = hashed_password
         updated_user = self.user_repos.update(user_id, user_data)
         return updated_user
 

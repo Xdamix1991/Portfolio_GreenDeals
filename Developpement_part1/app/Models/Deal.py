@@ -16,3 +16,17 @@ class Deal(ModelBase):
     reparability = db.Column(db.Float(3), nullable=True)
     author = db.relationship('User', back_populates='deals')
     comment = db.relationship('Comment', back_populates='deal', cascade="all, delete-orphan")
+
+
+    def deal_to_dict(deal):
+        return {
+            "id": deal.id,
+            "owner": deal.user_id,
+            "title": deal.title,
+            "link": deal.link,
+            "description": deal.description,
+            "price": deal.price,
+            "categorie": deal.categorie,
+            "location": deal.location,
+            "reparability": deal.reparability
+        }

@@ -50,7 +50,7 @@ class SQLAlchemyRepository(Repository):
         return db.session.query(self.model).all()
 
     def update(self, obj_id, data):
-       db.session.query(self.model).filter(obj_id).update(data)
+       db.session.query(self.model).filter(self.model.id == obj_id).update(data)
        db.session.commit()
        return self.get(obj_id)
 

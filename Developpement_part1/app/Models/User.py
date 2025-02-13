@@ -13,3 +13,10 @@ class User(ModelBase):
     is_admin = db.Column(db.Boolean, default=False, nullable=True)
     deals = db.relationship('Deal', back_populates='author', cascade="all, delete-orphan")
     comment = db.relationship('Comment', back_populates='user', cascade="all, delete-orphan")
+
+
+    def user_to_dict (user):
+        return  { "user_id": user.id,
+                 "first_name": user.first_name,
+                 "last_name": user.last_name,
+    }

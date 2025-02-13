@@ -16,12 +16,12 @@ def creat_app(config_classe=DevelopementConfig):
     jwt.init_app(app)
     db.init_app(app)
 
-    with app.app_context():
-        db.create_all()
 
     from app.api.auth import api as api_auth
     from app.api.users import api as api_users
 
     api.add_namespace(api_users, path='/api/users')
     api.add_namespace(api_auth, path='/api/auth')
+    with app.app_context():
+        db.create_all()
     return app

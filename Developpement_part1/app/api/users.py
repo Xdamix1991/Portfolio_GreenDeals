@@ -3,7 +3,7 @@ from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.Models.User import User
 from app.Persistence.user_queries import facade_user
-
+from flask import jsonify
 
 
 
@@ -38,13 +38,26 @@ class UserReource(Resource):
 @api.route('/<user_id>')
 
 class UserOperation(Resource):
-    @jwt_required
+    @jwt_required()
     def get(self, user_id):
-        identity = get_jwt_identity()
+        get_jwt_identity()
         user = user_facade.get_user(user_id)
         if not user:
             return {'error': 'user not found'}, 404
-        if user.id != identity['id']:
-            return {'message': 'Unauthorized action.'}, 403
-        return user
+        return jsonify(user.user_to_dict())
 
+
+    def put(self, user_id):
+        data = api.payload
+        current_user = user_facade.get_user(user_id)
+        if not current_user:
+            return {"message": "can't access to this user"}
+        user_updated = user_facade.update_user(user_id, data)
+        return jsonify(user_updated.user_to_dict())
+
+    def delete(self, user_id):
+        user = user_facade.get_user(user_id)
+        if user:
+            user_facade.delete_user(user_id)
+            return {"message": "user has benn deleted successufuly"}, 200
+        return {"message": "error was occured"}, 403
