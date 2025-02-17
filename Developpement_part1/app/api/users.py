@@ -2,17 +2,20 @@ from flask import Flask, jsonify
 from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.Models.User import User
-from app.Persistence.user_queries import facade_user
+from app.Persistence.user_queries import UserMethodes
 from flask import jsonify
 
 
 
 api = Namespace(name='users', description='User routes oppertations')
 
-user_facade = facade_user()
+user_facade = UserMethodes()
 user = User()
-users_model = api.model('User', {'first_name': fields.String(required=True), 'last_name': fields.String(required=True),
-                                 'email': fields.String(required=True), 'pass_word': fields.String(required=True),
+users_model = api.model('User', {'first_name': fields.String(required=True),
+                                 'last_name': fields.String(required=True),
+                                 'email': fields.String(required=True),
+                                  'pseudo': fields.String(required=True),
+                                  'pass_word': fields.String(required=True),
                                  'is_admin': fields.Boolean(required=False)})
 
 

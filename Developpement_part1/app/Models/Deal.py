@@ -18,15 +18,15 @@ class Deal(ModelBase):
     comment = db.relationship('Comment', back_populates='deal', cascade="all, delete-orphan")
 
 
-    def deal_to_dict(deal):
+    def deal_to_dict(self):
         return {
-            "id": deal.id,
-            "owner": deal.user_id,
-            "title": deal.title,
-            "link": deal.link,
-            "description": deal.description,
-            "price": deal.price,
-            "categorie": deal.categorie,
-            "location": deal.location,
-            "reparability": deal.reparability
+            "id": self.id,
+            "owner": self.user_id,
+            "title": self.title,
+            "link": self.link or "",
+            "description": self.description,
+            "price": self.price,
+            "categorie": self.categorie,
+            "location": self.location,
+            "reparability": self.reparability
         }

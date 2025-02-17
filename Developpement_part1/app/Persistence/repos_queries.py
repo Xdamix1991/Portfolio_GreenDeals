@@ -2,7 +2,7 @@ from app.db_extension import db
 from abc import ABC,  abstractmethod
 from app.Models.User import User
 from app.Models.Deal import Deal
-from app.Models.Comment import Comment
+from app.Models.Review import Comment
 
 class Repository(ABC):
 
@@ -73,9 +73,9 @@ class UserRepository(SQLAlchemyRepository):
         super().__init__(User)
 
 class DealRepository(SQLAlchemyRepository):
-    def __init__(self, model):
+    def __init__(self):
         super().__init__(Deal)
 
 class CommentRepository(SQLAlchemyRepository):
-    def __init__(self, model):
+    def __init__(self):
         super().__init__(Comment)

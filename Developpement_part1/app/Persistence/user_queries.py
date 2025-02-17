@@ -2,7 +2,7 @@ from app.Persistence.repos_queries import UserRepository
 from app.Models.User import User
 
 
-class facade_user():
+class UserMethodes():
     def __init__(self):
         self.user_repos = UserRepository()
 
@@ -42,6 +42,6 @@ class facade_user():
         current_user = self.user_repos.get(user_id)
         if current_user:
             self.user_repos.delete(user_id)
-            return "user deleted"
+            return {"user deleted"}
         return
 

@@ -1,21 +1,21 @@
-from app.Models.Comment import Comment
-from repos_queries import CommentRepository
+from app.Models.Review import Comment
+from app.Persistence.repos_queries import CommentRepository
 from app.Models.Deal import Deal
 from app.Models.User import User
-from deal_queries import Deal_facade
-from user_queries import facade_user
+from app.Persistence.deal_queries import DealMethodes
 
-class facade_comment():
+deal_facade = DealMethodes()
+
+class CommentMethodes():
     def __init__(self):
         self.comment_repos = CommentRepository()
 
-    def create_comment(self, deal_id, **data):
-        deal = Deal_facade.get_deal(deal_id)
-        if deal :
-            comment = Comment()
+    def create_comment(self, **data):
+
+            comment = Comment(**data)
             self.comment_repos.add(comment)
-            return deal
-        return
+            return comment
+
 
     def get_comment(self, comment_id):
         comment = self.comment_repos.get(comment_id)
@@ -25,16 +25,16 @@ class facade_comment():
         comments = self.comment_repos.get_all()
         return comments
 
-    def update_comment(self, comment_id, **data):
+    def update_comment(self, comment_id, data):
         current_comment = self.comment_repos.get(comment_id)
         if current_comment:
-            update_comment = self.comment_repos.update(current_comment, data)
+            update_comment = self.comment_repos.update(comment_id, data)
             return update_comment
         return
 
     def delete_comment(self, comment_id):
         current_comment = self.comment_repos.get(comment_id)
         if current_comment:
-            self.comment_repos.delete(current_comment)
+            self.comment_repos.delete(comment_id)
             return "comment deleted"
-        return 
+        return

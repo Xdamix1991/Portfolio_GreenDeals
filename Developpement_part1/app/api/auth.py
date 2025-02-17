@@ -1,6 +1,6 @@
 from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, create_refresh_token
-from app.Persistence.user_queries import facade_user
+from app.Persistence.user_queries import UserMethodes
 from app.api.api_extensions import bcrypt
 
 
@@ -10,7 +10,7 @@ api = Namespace('auth', description='Authetification operations')
 login_model = api.model('login', {'email': fields.String(required = True, description='user email'),
                                   'passWord': fields.String(required=True, description='user password')})
 
-user_facade = facade_user()
+user_facade = UserMethodes()
 
 @api.route('/login')
 
@@ -47,4 +47,4 @@ class ProtectedResource(Resource):
                 "message": "hello user admin"}
         if user['is_admin'] is False:
             return {"id": user['id'],
-                "hello user": user['id']}, 200
+                "message": "hello user"}, 200

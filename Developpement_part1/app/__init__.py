@@ -19,9 +19,14 @@ def creat_app(config_classe=DevelopementConfig):
 
     from app.api.auth import api as api_auth
     from app.api.users import api as api_users
+    from app.api.deals import api as api_deals
+    from app.api.reviews import api as api_comment
 
     api.add_namespace(api_users, path='/api/users')
     api.add_namespace(api_auth, path='/api/auth')
+    api.add_namespace(api_deals, path='/api/deals')
+    api.add_namespace(api_comment, path='/api/reviews')
+    
     with app.app_context():
         db.create_all()
     return app
