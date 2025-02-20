@@ -8,10 +8,10 @@ from app.db_extension import db
 
 bcrypt = Bcrypt()
 jwt = JWTManager()
-def creat_app(config_classe=DevelopementConfig):
-    app = Flask(__name__)
+def create_app(config_classe=DevelopementConfig):
+    app = Flask(__name__, template_folder='templates', static_folder='statics', static_url_path='/statics')
     app.config.from_object(config_classe)
-    api = Api(app, version="1.0", title='GreenDeals', description='GreenDeals_api')
+    api = Api(app, version="1.0", title='GreenDeals', description='GreenDeals_api', doc='/api/')
     bcrypt.init_app(app)
     jwt.init_app(app)
     db.init_app(app)
@@ -26,7 +26,7 @@ def creat_app(config_classe=DevelopementConfig):
     api.add_namespace(api_auth, path='/api/auth')
     api.add_namespace(api_deals, path='/api/deals')
     api.add_namespace(api_comment, path='/api/reviews')
-    
+
     with app.app_context():
         db.create_all()
     return app

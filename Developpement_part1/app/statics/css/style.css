@@ -1,0 +1,150 @@
+
+* {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  main {
+    flex: 1 0 auto; /* Ceci fait que le main prend tout l'espace disponible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+header {
+    background-color:  #93c47d;
+    display: flex;
+    height: 120px;
+
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+.logo img {
+    width: 40px;
+    height: auto;
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 90%;
+
+}
+
+
+
+.search-bar {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top:5%;
+    margin: 20px;
+
+}
+
+.search-bar button {
+
+    background-color: aquamarine;
+}
+.search-bar .searchbar{
+    font-size: medium;
+}
+
+.logo img {
+    width: 40px;
+    height: auto;
+}
+
+nav {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav ul  {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    border-style: solid;
+    background-color: white;
+    gap: 30px;
+    border-style: solid;
+}
+
+
+nav ul li a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+
+    background-color: white;
+
+}
+
+
+
+
+footer {
+    display: flex;
+    height: auto;
+    background-color: #93c47d;
+    align-items: center;
+}
+footer p {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+}
+.navigation-footer {
+    display: flex;
+
+}
+.navigation-footer ul {
+    position: absolute;
+    list-style: none;
+    display: flex;
+
+    left: 90%;
+
+
+}
+
+.navigation-footer ul li{
+    list-style: none;
+    justify-content: space-between;
+    display: flex;
+    gap: 15px;
+}
+.contact {
+    display: flex;
+
+
+}
+.contact ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+
+}

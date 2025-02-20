@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, request
 from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.Models.User import User
@@ -39,7 +39,9 @@ class DealsResource(Resource):
 
 
     def get(self):
-        deals = deal_facade.get_all_deals()
+        filters= request.args
+
+        deals = deal_facade.get_deal_by_attributes(**filters)
         print(deals)
         return [deal.deal_to_dict() for deal in deals]
 

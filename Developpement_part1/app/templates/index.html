@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>GreenDeals</title>
+</head>
+<body>
+    <header>
+        <a class="login" href="{{ url_for('login') }}"><button> Login</button></a>
+        <a class="logo" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/portfo.jpg') }}" alt="Logo GreenDeals"> GreenDeals
+        </a>
+        <div class="search-bar">
+            <form action="#" method="GET">
+                <input class="searchbar" type="text" placeholder="Recherche dans les deals">
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li><a class="hotdeals" href="#">Hot Deals</a></li>
+                <li><a class="recent" href="#">Recents</a></li>
+                <li><a href="{{ url_for('mypage') }}">My Page</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+            <h1>Work in Progress</h1>
+    </main>
+    <footer>
+        <div class="contact">
+                <ul>
+                    <li><a href="#">gitHub</a></li>
+                    <li><a href="#">Linked_in</a></li>
+                    <li><a href="#">Holberton School</a></li>
+                </ul>
+        </div>
+        <div class="navigation-footer">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#"></a>Contacts</li>
+            </ul>
+        </div>
+        <p>&copy; 2025 GreenDeals. Tous droits réservés. Créé à <a href="https://www.holbertonschool.com" target="_blank">Holberton School</a>.</p>
+    </footer>
+</body>
+</html>
