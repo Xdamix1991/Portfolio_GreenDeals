@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <title>GreenDeals</title>
+</head>
+<body>
+    <header>
+        <a class="login" href="{{ url_for('home') }}"><button> Home</button></a>
+        <a class="logo" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/portfo.jpg') }}" alt="Logo GreenDeals"> GreenDeals
+        </a>
+        <div class="search-bar">
+            <form action="#" method="GET">
+                <input class="searchbar" type="text" placeholder="Recherche dans les deals">
+                <button type="submit">rechercher</button>
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li><a class="hotdeals" href="#">Hot Deals</a></li>
+                <li><a class="recent" href="#">Recents</a></li>
+                <li><a href="{{ url_for('mypage') }}">My Page</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+		<h1>Bienvenue sur votre page</h1>
+		<div id="user-info">
+			<p>Chargement des informations utilisateur...</p>
+		</div>
+
+		<script>
+                document.addEventListener("DOMContentLoaded", () => {
+                const userData = localStorage.getItem('userData');
+
+                if (!userData) {
+                window.location.href = 'login';
+                return;
+                 }
+
+        const user = JSON.parse(userData);
+
+        document.getElementById('user-info').innerHTML = `
+        <p><strong>ID :</strong> ${user.user_id}</p>
+        <p><strong>Prénom :</strong> ${user.first_name}</p>
+        <p><strong>Nom :</strong> ${user.last_name}</p>
+        <p><strong>Pseudo :</strong> ${user.pseudo}</p>
+                `;
+            });
+		</script>
+
+<form action="{{ url_for('deals_deals_resource') }}" method="POST">
+    <label for="title">Titre du deal</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="price">Prix</label>
+    <input type="number" id="price" name="price" required>
+
+    <button type="submit">Poster le deal</button>
+</form>
+    </main>
+    <footer>
+        <div class="contact">
+                <ul>
+                    <li><a href="#">gitHub</a></li>
+                    <li><a href="#">Linked_in</a></li>
+                    <li><a href="#">Holberton School</a></li>
+                </ul>
+        </div>
+        <div class="navigation-footer">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#"></a>Contacts</li>
+            </ul>
+        </div>
+        <p>&copy; 2025 GreenDeals. Tous droits réservés. Créé à <a href="https://www.holbertonschool.com" target="_blank">Holberton School</a>.</p>
+    </footer>
+</body>
+</html>

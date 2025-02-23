@@ -9,7 +9,6 @@ class User(ModelBase):
 
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    pseudo = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(50), nullable=False)
     pass_word = db.Column(db.String(50), nullable=False)
     is_admin = db.Column(db.Boolean, default=False, nullable=True)
@@ -31,6 +30,8 @@ class User(ModelBase):
         regex = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$"
         if not password:
             raise ValueError("you must enter a password")
+        if isinstance(password, bytes):
+            password = password.decode('utf-8')
         if not re.match(regex, password):
             raise ValueError("you must enter a valid password (one lowercase, one uppercase, one number, and at least 6 characters)")
         return password
@@ -49,5 +50,4 @@ class User(ModelBase):
                 "user_id": self.id,
                  "first_name": self.first_name,
                  "last_name": self.last_name,
-                 "pseudo": self.pseudo
             }

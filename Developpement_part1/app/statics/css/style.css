@@ -148,3 +148,15 @@ footer p {
     list-style: none;
 
 }
+.deal_container {
+    display: grid;
+    gap: 40px;
+    width: 1000px;
+
+}
+.deal_details {
+
+    display: flex;
+    border-style: solid;
+    gap: 150px;
+}

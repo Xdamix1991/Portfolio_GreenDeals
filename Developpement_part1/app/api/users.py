@@ -13,8 +13,6 @@ user_facade = UserMethodes()
 user = User()
 users_model = api.model('User', {'first_name': fields.String(required=True),
                                  'last_name': fields.String(required=True),
-                                 'email': fields.String(required=True),
-                                  'pseudo': fields.String(required=True),
                                   'pass_word': fields.String(required=True),
                                  'is_admin': fields.Boolean(required=False)})
 

@@ -2,6 +2,7 @@ from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, create_refresh_token
 from app.Persistence.user_queries import UserMethodes
 from app.api.api_extensions import bcrypt
+from app.Models.User import User
 
 
 
@@ -32,7 +33,8 @@ class AuthResource(Resource):
                 passwd = user.pass_word
                 if  bcrypt.check_password_hash(passwd, password):
                     token = create_access_token(identity={'id': str(user.id),'is_admin': user.is_admin})
-                    return {"access_token": token}, 200
+                    return {"access_token": token,
+                            "user": user.user_to_dict()}, 200
                 return {'error': 'invalid access passWord'}, 401
             return {'message': 'enter valid login'}, 401
 
@@ -42,9 +44,12 @@ class ProtectedResource(Resource):
     @jwt_required()
     def get(self):
         user = get_jwt_identity()
+        current_user =user_facade.get_user(user['id'])
+
         if user['is_admin'] is True:
-            return { "id": user['id'],
+            return { "user": current_user.user_to_dict(),
                 "message": "hello user admin"}
+
         if user['is_admin'] is False:
-            return {"id": user['id'],
+            return {"user": current_user.user_to_dict(),
                 "message": "hello user"}, 200

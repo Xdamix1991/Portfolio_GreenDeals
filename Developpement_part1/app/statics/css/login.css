@@ -14,6 +14,10 @@
 	justify-content: space-around;
 	padding: 20px;
 	border-radius: 15px;
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.64);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.64);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.64);
+
   }
   .logi {
 	position: relative;
@@ -21,10 +25,19 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	row-gap: 20px;
 
 
+  }
 
+  .logi input {
+	width: 250px;
+	height: 50px;
+	font-size: large;
+	margin: 40px;
+
+  }
+  .logi label{
+	position: sticky;
   }
 
 
@@ -32,16 +45,19 @@
 	background-color: #04AA6D;
 	color: rgb(49, 42, 42);
 	padding: 14px 20px;
-	margin: 8px 0;
 	border: none;
 	cursor: pointer;
 	width: 150px;
-
-
+	font-size: large;
+	margin: 190px 20px;
 	border-radius: 12px;
 
-  }
 
+  }
+.user_register {
+	position: absolute;
+	margin-top: 450px;
+}
 .login-container  button:hover {
 	transform: scale(1.2);
 	opacity: 1.2;
