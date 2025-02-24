@@ -44,19 +44,30 @@
                 return;
                  }
 
+        try {
         const user = JSON.parse(userData);
 
+        // Vérifie que l'objet utilisateur est bien structuré avant de l'utiliser
+        if (!user || !user.user_id || !user.first_name || !user.last_name) {
+            throw new Error('Les données de l\'utilisateur sont incorrectes.');
+        }
+
         document.getElementById('user-info').innerHTML = `
-        <p><strong>ID :</strong> ${user.user_id}</p>
-        <p><strong>Prénom :</strong> ${user.first_name}</p>
-        <p><strong>Nom :</strong> ${user.last_name}</p>
-        <p><strong>Pseudo :</strong> ${user.pseudo}</p>
-                `;
-            });
+            <p><strong>ID :</strong> ${user.user_id}</p>
+            <p><strong>Prénom :</strong> ${user.first_name}</p>
+            <p><strong>Nom :</strong> ${user.last_name}</p>
+            <p><strong>Pseudo :</strong> ${user.pseudo}</p>
+        `;
+    } catch (error) {
+        console.error('Erreur de parsing JSON:', error);
+        alert('Erreur de données utilisateur.');
+        window.location.href = 'login'; // Rediriger vers la page de login en cas d'erreur
+    }
+});
 		</script>
 
 <div class="deal_container">
-<form  id="deal_form" action="{{ url_for('deals_deals_resource') }}" method="POST">
+<form  id="deal_form" >
     <p>Remplissez les champs</p>
     <label for="title">Titre du deal</label>
     <input type="text" id="title" name="title" required>
@@ -77,11 +88,15 @@
     <label for="price">Prix</label>
     <input type="number" id="price" name="price" required>
 
-    <label for="reparability"></label>
+    <label for="reparability">idr</label>
+    <input type="number" id="reparability">
 
     <button type="submit">Poster le deal</button>
 </div>
 </form>
+    <div id="result_container">
+
+    </div>
 </main>
 
     <footer>
@@ -100,5 +115,8 @@
         </div>
         <p>&copy; 2025 GreenDeals. Tous droits réservés. Créé à <a href="https://www.holbertonschool.com" target="_blank">Holberton School</a>.</p>
     </footer>
+    <script   src="{{url_for('static', filename='/js/dealsOperation.js')}}" type="module"></script>
+    <script   src="{{url_for('static', filename='/js/dealsOperation.js')}}" type="module"></script>
+
 </body>
 </html>

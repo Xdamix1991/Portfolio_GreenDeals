@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask_restx import Namespace, Resource, fields
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from app.Models.User import User
 from app.Models.Deal import Deal
 from app.Persistence.user_queries import UserMethodes
@@ -25,10 +25,16 @@ class DealsResource(Resource):
     @api.expect(deal_model)
     @api.response(200, 'Success')
     @api.response(400, 'invalid data')
-    @jwt_required()
 
+    @jwt_required()
     def post(self):
+        token = get_jwt()
+
+        if not token:
+            return {'message': 'Token manquant'}, 401
+
         current_user = get_jwt_identity()
+        print(current_user)
         user_id = current_user['id']
         print(user_id)
         data = api.payload

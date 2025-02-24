@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
           headers: {
               'Content-Type': 'application/json'
           },
+          credentials: 'include',
           body: JSON.stringify(loginData)
       })
       .then(response => {
@@ -39,24 +40,9 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(data => {
           // Stocker le token et les données de l'utilisateur dans le localStorage
-          localStorage.setItem('token', data.access_token);
 
-            return fetch('/api/auth/protected', {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${data.access_token}`
-                }
-            })
-          // Rediriger vers la page utilisateur
-
-      })
-      .then(response => {
-        if (! response.ok) throw new Error("accés reffusé !");
-        return response.json()
-      })
-      .then(data => {
-        localStorage.setItem('userData', JSON.stringify(data.user))
-        window.location.href = 'mypage';
+            localStorage.setItem('userData', JSON.stringify(data.user))
+        window.location.href = 'mypage'
       })
       .catch(error => {
           console.error('Erreur:', error);

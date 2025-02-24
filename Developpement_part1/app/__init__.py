@@ -1,4 +1,5 @@
 from flask import Flask
+from datetime import timedelta
 from flask_restx import Api
 from config import DevelopementConfig
 from flask_bcrypt import Bcrypt
@@ -11,6 +12,11 @@ jwt = JWTManager()
 def create_app(config_classe=DevelopementConfig):
     app = Flask(__name__, template_folder='templates', static_folder='statics', static_url_path='/statics')
     app.config.from_object(config_classe)
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=4)
+    app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
+    app.config["JWT_COOKIE_SECURE"] = False
+    app.config['JWT_COOKIE_CSRF_PROTECT'] = False
+
     api = Api(app, version="1.0", title='GreenDeals', description='GreenDeals_api', doc='/api/')
     bcrypt.init_app(app)
     jwt.init_app(app)
