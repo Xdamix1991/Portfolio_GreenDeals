@@ -1,22 +1,36 @@
 
-* {
-    box-sizing: border-box;
-}
-html, body {
-    height: 100%;
+html {
 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+
+  }
+ body {
+    height: 100%;
   }
 
   body {
+
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    overflow: scroll;
+
   }
   main {
-    flex: 1 0 auto; /* Ceci fait que le main prend tout l'espace disponible */
+    position: relative;
+    flex: content;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
+
+    overflow: scroll;
+    row-gap: 0px;
+
   }
 
 
@@ -24,6 +38,7 @@ header {
     background-color:  #93c47d;
     display: flex;
     height: 120px;
+    margin: 25px;
 
 }
 .logo {
@@ -51,6 +66,7 @@ header {
 
 .search-bar {
     display: flex;
+    
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -105,10 +121,15 @@ nav ul li a {
 
 
 footer {
+    bottom: 0;
+    position:absolute;
+
     display: flex;
     height: auto;
+    width: 100%;
     background-color: #93c47d;
     align-items: center;
+    margin: 25px;
 }
 footer p {
     position: absolute;

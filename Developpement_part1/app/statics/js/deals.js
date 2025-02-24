@@ -38,5 +38,6 @@ function displayDeals(deals) {
     `).join('');
 }
 
+
 // Appelle la fonction au chargement de la page
 document.addEventListener('DOMContentLoaded', fetchDeals);

@@ -1,0 +1,44 @@
+.deal_container {
+	position: relative;
+	flex: 0.35;
+	display: flex;
+	flex-direction: column;
+
+
+	width: 500px;
+	height: 700px;
+
+	margin: 25px;
+	gap: 30px;
+
+}
+
+
+#deal_form{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	background-color: #92b480;
+}
+#user-info {
+	position: relative;
+	display: flex;
+	height: fit-content;
+
+	flex-direction: column;
+	background-color: #92b480;
+
+}
+#deal_form input {
+	height: 50px;
+	width: 400px;
+}
+main h1 {
+
+	position:relative;
+	text-align: start;
+}
+
+
+
