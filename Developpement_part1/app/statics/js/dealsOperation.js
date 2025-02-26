@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   const myDealsContainer = document.getElementById('my_deals');
   const updateForm = document.getElementById('update_form');
 
+
   dealsButton.addEventListener('click', function() {
     if (window.getComputedStyle(dealOptions).display === 'none') {
       dealOptions.style.display = 'block';
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   myDealsButton.addEventListener('click', async function() {
     dealForm.style.display = 'none';
     myDealsContainer.style.display = 'block';
-    await fetchUserDeals(); // Appel de fetchUserDeals
+    await fetchUserDeals(); // Appel de fetchUserDeals before
   });
 
   if (dealForm) {
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     userId = user.user_id;
   }
 
-  // Déplacer fetchUserDeals en dehors du bloc if
+
   async function fetchUserDeals() {
     if (!userId) {
       alert("Utilisateur non connecté.");
@@ -155,3 +156,4 @@ document.addEventListener('DOMContentLoaded', function(event) {
     });
   }
 });
+

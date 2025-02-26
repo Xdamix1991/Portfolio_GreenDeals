@@ -22,8 +22,10 @@ class DealMethodes():
         deal = self.deal_repos.get(deal_id)
         return deal
 
-    def get_deal_by_attributes(self, title=None, categorie=None, price=None, user_id =None):
+    def get_deal_by_attributes(self, name=None, title=None, categorie=None, price=None, user_id =None, reparability=None):
         filters = {}
+        if name is not None:
+            filters['name'] = name
         if title is not None:
             filters['title'] = title
         if categorie is not None:
@@ -32,6 +34,9 @@ class DealMethodes():
             filters['price'] = price
         if user_id is not None:
             filters['user_id'] = user_id
+        if reparability is not None:
+            filters['reparability'] = reparability
+        print("deal recu dans ddeal_querie.py", filters)
 
         deal = self.deal_repos.get_by_attributes(**filters)
         return deal

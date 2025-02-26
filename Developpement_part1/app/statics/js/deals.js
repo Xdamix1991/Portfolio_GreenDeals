@@ -1,4 +1,4 @@
-// Sélectionne le conteneur où les deals seront affichés
+
 const dealsContainer = document.querySelector('.deal_container');
 
 // Fonction pour récupérer les deals depuis l'API
@@ -41,3 +41,6 @@ function displayDeals(deals) {
 
 // Appelle la fonction au chargement de la page
 document.addEventListener('DOMContentLoaded', fetchDeals);
+
+
+

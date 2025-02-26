@@ -44,11 +44,26 @@ class DealsResource(Resource):
 
 
     def get(self):
-        filters= request.args
-        filters = {key: value for key, value in request.args.items() if value}
+        filters= request.args.to_dict()
+
+        if 'name' in filters:
+            filters['name'] = filters.pop('name')  #
+
         print("Filters reçus dans deals.py:", filters)
+        if filters.get('categorie') == "null" or filters.get('categorie') == '':
+            filters['categorie'] = None
+        if filters.get('price') == "null"or filters.get('price') == '':
+            filters['price'] = None
+        if filters.get('reparability') == "null" or filters.get('reparability') == '':
+            filters['reparability'] = None
+
+        if filters.get('price'):
+            price_range = filters['price'].split('-')  # Par exemple '0-50'
+            if len(price_range) == 2:
+                filters['price'] = (price_range[0], price_range[1])
+
         deals = deal_facade.get_deal_by_attributes(**filters)
-        print(deals)
+        print("resultat du filtre", deals)
         return [deal.deal_to_dict() for deal in deals]
 
 

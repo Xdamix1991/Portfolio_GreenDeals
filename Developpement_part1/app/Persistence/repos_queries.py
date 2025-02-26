@@ -61,8 +61,35 @@ class SQLAlchemyRepository(Repository):
             db.session.commit()
 
     def get_by_attributes(self, **kwargs):
-        objs = db.session.query(self.model).filter_by(**kwargs).all()
-        return objs
+
+        query = db.session.query(self.model)
+
+        if 'name' in kwargs and kwargs['name']:
+            search_term = f"%{kwargs['name']}%"
+            query = query.filter(
+                self.model.title.ilike(search_term) |
+                self.model.categorie.ilike(search_term) |
+                self.model.description.ilike(search_term)
+            )
+
+        filters = {
+            'title': self.model.title,
+            'categorie': self.model.categorie,
+            'user_id': self.model.user_id,
+            'reparability': self.model.reparability,
+            'price': self.model.price
+        }
+
+        for key, column in filters.items():
+            if key in kwargs and kwargs[key] is not None:
+                if key == 'price' and isinstance(kwargs[key], tuple):
+                    query = query.filter(self.model.price.between(kwargs[key][0], kwargs[key][1]))
+                else:
+                    query = query.filter(column == kwargs[key])
+
+
+        result = query.all()
+        return result
 
     def get_user_by_att(self, **kwargs):
         user = db.session.query(self.model).filter_by(**kwargs).first()
