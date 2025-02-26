@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/mypage.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
     <title>GreenDeals</title>
 </head>
 <body>
@@ -66,37 +68,93 @@
 });
 		</script>
 
+
 <div class="deal_container">
-<form  id="deal_form" >
-    <p>Remplissez les champs</p>
-    <label for="title">Titre du deal</label>
-    <input type="text" id="title" name="title" required>
+    <h3>Deals</h3>
 
-    <label for="lien">lien</label>
-    <input type="text" id="lien" placeholder="lien du deal">
+    <!-- Le bouton Deals -->
+    <button id="dealsButton">Deals</button>
 
-    <label for="description">Description</label>
-    <textarea id="description" name="description" required></textarea>
-
-    <label for="categorie">categorie</label>
-    <input type="text" id="categorie" placeholder="categorie">
-
-    <label for="location">localisation</label>
-    <input type="text"  id="location" "site ou marchand">
-
-
-    <label for="price">Prix</label>
-    <input type="number" id="price" name="price" required>
-
-    <label for="reparability">idr</label>
-    <input type="number" id="reparability">
-
-    <button type="submit">Poster le deal</button>
-</div>
-</form>
-    <div id="result_container">
-
+    <!-- Conteneur avec les options, caché par défaut -->
+    <div id="dealOptions" style="display:none;">
+      <button id="addDealButton" type="button">Ajouter un deal</button>
+      <button id="myDealsButton" type="button">Mes deals</button>
     </div>
+
+    <!-- Formulaire pour ajouter un deal -->
+    <form id="deal_form" style="display:none;">
+      <h3>Ajouter un Deal</h3>
+      <label for="title">Titre du deal</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="lien">Lien</label>
+      <input type="text" id="lien" name="link" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description" required></textarea>
+
+      <label for="categorie">Catégorie</label>
+      <input type="text" id="categorie" name="categorie" required>
+
+      <label for="location">Localisation</label>
+      <input type="text" id="location" name="location" required>
+
+      <label for="price">Prix</label>
+      <input type="number" id="price" name="price" required>
+
+      <label for="reparability">IDR</label>
+      <input type="number" id="reparability" name="reparability" required>
+
+      <button type="submit">Poster le deal</button>
+    </form>
+</div>
+
+    <!-- Zone pour afficher les deals de l'utilisateur -->
+    <div id="my_deals"></div>
+
+
+    <div id="my_deals">
+        <!-- scripting to display user deals -->
+    </div class="deal_update">
+        <!-- scripting to display user updating deals -->
+        <form id="update_form" style="display: none;">
+            <h2>Modifier le deal</h2>
+
+            <div class="form-group">
+              <label for="update_title">Titre</label>
+              <input type="text" id="update_title" required>
+            </div>
+            <div class="form-group">
+              <label for="update_lien">Lien</label>
+              <input type="text" id="update_lien" required>
+            </div>
+            <div class="form-group">
+              <label for="update_description">Description</label>
+              <textarea id="update_description" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="update_price">Prix</label>
+              <input type="number" id="update_price" required>
+            </div>
+            <div class="form-group">
+              <label for="update_categorie">Catégorie</label>
+              <input id="update_categorie" required>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="update_location">Lieu</label>
+              <input type="text" id="update_location" required>
+            </div>
+            <div class="form-group">
+              <label for="update_reparability">Indice de réparabilité</label>
+              <input type="number" id="update_reparability" min="0" max="10" required>
+            </div>
+            <button type="submit">Mettre à jour le deal</button>
+          </form>
+        <div >
+
+        </div>
 </main>
 
     <footer>
@@ -117,6 +175,6 @@
     </footer>
     <script   src="{{url_for('static', filename='/js/dealsOperation.js')}}" type="module"></script>
     <script   src="{{url_for('static', filename='/js/dealsOperation.js')}}" type="module"></script>
-
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

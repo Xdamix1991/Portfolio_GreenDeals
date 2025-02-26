@@ -62,3 +62,6 @@ class UserOperation(Resource):
             user_facade.delete_user(user_id)
             return {"message": "user has benn deleted successufuly"}, 200
         return {"message": "error was occured"}, 403
+
+
+

@@ -22,7 +22,7 @@ class DealMethodes():
         deal = self.deal_repos.get(deal_id)
         return deal
 
-    def get_deal_by_attributes(self, title=None, categorie=None, price=None):
+    def get_deal_by_attributes(self, title=None, categorie=None, price=None, user_id =None):
         filters = {}
         if title is not None:
             filters['title'] = title
@@ -30,6 +30,9 @@ class DealMethodes():
             filters['categorie'] = categorie
         if price is not None:
             filters['price'] = price
+        if user_id is not None:
+            filters['user_id'] = user_id
+
         deal = self.deal_repos.get_by_attributes(**filters)
         return deal
 

@@ -27,6 +27,7 @@ async function fetchData(endpoint, method = 'GET', data = null, options = {}) {
     }
 
     return await response.json();
+
   } catch (error) {
     console.error(`Erreur lors de la requête à ${endpoint}:`, error);
     throw error;

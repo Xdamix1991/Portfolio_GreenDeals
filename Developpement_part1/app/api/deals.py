@@ -40,13 +40,13 @@ class DealsResource(Resource):
         data = api.payload
         data['user_id'] = user_id
         new_deal = deal_facade.create_deal(**data)
-
         return new_deal.deal_to_dict(), 200
 
 
     def get(self):
         filters= request.args
-
+        filters = {key: value for key, value in request.args.items() if value}
+        print("Filters reçus dans deals.py:", filters)
         deals = deal_facade.get_deal_by_attributes(**filters)
         print(deals)
         return [deal.deal_to_dict() for deal in deals]
