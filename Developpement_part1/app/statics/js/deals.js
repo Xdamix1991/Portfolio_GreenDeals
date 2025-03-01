@@ -19,22 +19,30 @@ async function fetchDeals() {
 // Fonction pour afficher les deals
 function displayDeals(deals) {
     dealsContainer.innerHTML = deals.map(deal => `
-        <div class="deal_cards">
-
             <div class="deal_details">
-                <div class="title"  <h3 >${deal.title}</h3> </div>
-                <p class="price"> prix ${deal.price}€</p>
-                <p class="location">📍 ${deal.location}</p>
-                <p class="category">${deal.categorie}</p>
-                ${deal.reparability ? `
-                    <p class="reparability">Indice de réparabilité: ${deal.reparability}/10</p>
-                ` : ''}
-                <p class="description">${deal.description}</p>
-                ${deal.link ? `
-                    <a href="${deal.link}" target="_blank" class="deal-link">Voir l'offre</a>
-                ` : ''}
-            </div>
+        <div class="deal-image">
+            <img src="${deal.image || 'https://via.placeholder.com/150'}" alt="${deal.title}">
         </div>
+        <div class="deal_text_content">
+            <div class="deal_header">
+                <div class="price"><p>${deal.price}€</p></div>
+                <div class="title"><h3>${deal.title}</h3></div>
+                <div class="reated_at"><h3>posté:le...</h3></div>
+            </div>
+
+            <div class="description"><p>${deal.description}</p></div>
+
+            <div class="deal_footer">
+                <div class="location"><p>📍 ${deal.location}</p></div>
+
+                <div class="category"><p>${deal.categorie}</p></div>
+                ${deal.reparability ? `<p class="reparability">Indice de réparabilité: ${deal.reparability}/10</p>` : ''}
+                <div class="comment"><a href="#">💬commentaires<a></div>
+                </div>
+
+            ${deal.link ? `<a href="${deal.link}" target="_blank" class="deal-link">Voir l'offre</a>` : ''}
+        </div>
+    </div>
     `).join('');
 }
 
