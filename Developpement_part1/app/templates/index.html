@@ -44,20 +44,17 @@
 
 
             <form class="filters_bar">
-
-                <div id="results_bar"></div>
-
                 <div class="filter-group">
                     <label for="price">Prix max :</label>
-                    <select id="price" name="price">
-                        <option value="">Tous les prix</option>
-                        <option value="0-50">0 - 50€</option>
-                        <option value="50-100">50 - 100€</option>
-                        <option value="100-200">100 - 200€</option>
-                        <option value="200-500">200 - 500€</option>
-                        <option value="500-1000">500 - 1000€</option>
-                        <option value="1000+">1000€ et plus</option>
-                    </select>
+                        <select id="price" name="price">
+                            <option value="">Tous les prix</option>
+                            <option value="0-50">0 - 50€</option>
+                            <option value="50-100">50 - 100€</option>
+                            <option value="100-200">100 - 200€</option>
+                            <option value="200-500">200 - 500€</option>
+                            <option value="500-1000">500 - 1000€</option>
+                            <option value="1000+">1000€ et plus</option>
+                        </select>
                 </div>
 
                 <div class="filter-group">
@@ -73,10 +70,14 @@
                 <button type="submit" class="filter-button">Appliquer les filtres</button>
             </form>
 
+            <div class="results_bar">
+                <div id="results_bar"></div>
+                </div>
 
-            <div id="deal_filters">
-                <script src="{{ url_for('static', filename='js/dealfilters.js') }}" type="module"></script>
+            <div class="deal_filters">
+                <div id="deal_filters">
 
+                </div>
             </div>
 
             <h1>Work in Progress</h1>
@@ -106,7 +107,7 @@
         </div>
         <p>&copy; 2025 GreenDeals. Tous droits réservés. Créé à <a href="https://www.holbertonschool.com" target="_blank">Holberton School</a>.</p>
     </footer>
-
+    <script src="{{ url_for('static', filename='js/dealfilters.js') }}" type="module"></script>
 
 
 </body>

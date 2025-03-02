@@ -1,66 +1,100 @@
-
-
-
-  .login-container {
-
-	display: inline-flex;
-	flex-direction: column;
-
-	width: 400px;
-	height: 600px;
-	align-items: center;
-	border-style:hidden;
-	background-color: #92b480;
-	justify-content: space-around;
-	padding: 20px;
-	border-radius: 15px;
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.64);
--webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.64);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.64);
-
-  }
-  .logi {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-
-
-  }
-
-  .logi input {
-	width: 250px;
-	height: 50px;
-	font-size: large;
-	margin: 40px;
-
-  }
-  .logi label{
-	position: sticky;
-  }
-
-
- .login-container button {
-	background-color: #04AA6D;
-	color: rgb(49, 42, 42);
-	padding: 14px 20px;
-	border: none;
-	cursor: pointer;
-	width: 150px;
-	font-size: large;
-	margin: 190px 20px;
-	border-radius: 12px;
-
-
-  }
-.user_register {
-	position: absolute;
-	margin-top: 450px;
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(147, 196, 125, 0) 100%);
+    justify-content: center;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+    margin: 40px auto;
 }
-.login-container  button:hover {
-	transform: scale(1.2);
-	opacity: 1.2;
-	box-shadow: 0 5px 2px rgb(92, 80, 80);
 
-  }
+.login-container:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.logi {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.logi input {
+    width: 250px;
+    height: 50px;
+    font-size: 16px;
+    margin: 15px 0;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.logi input:hover, .logi input:focus {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.logi label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 20px;
+}
+
+.login-container button {
+    background-color: #fff;
+    color: #000;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 30px;
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.login-container button:hover {
+    background-color: #ff7100;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.user_register {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.user_register:hover {
+    color: #e66000;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        max-width: 350px;
+        padding: 20px;
+    }
+
+    .logi input {
+        width: 100%;
+        max-width: 230px;
+    }
+
+    .login-container button {
+        width: 130px;
+        font-size: 16px;
+    }
+}

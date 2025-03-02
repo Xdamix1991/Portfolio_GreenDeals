@@ -19,12 +19,18 @@ document.addEventListener('DOMContentLoaded', function(event) {
   });
 
   addDealButton.addEventListener('click', function() {
+    if (updateForm) {
+      updateForm.style.display = 'none';
+    }
     dealForm.style.display = 'block';
     myDealsContainer.style.display = 'none';
   });
 
   myDealsButton.addEventListener('click', async function() {
     dealForm.style.display = 'none';
+    if (updateForm) {
+      updateForm.style.display = 'none';
+    }
     myDealsContainer.style.display = 'block';
     await fetchUserDeals(); // Appel de fetchUserDeals before
   });

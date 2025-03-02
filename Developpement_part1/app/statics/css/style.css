@@ -240,7 +240,7 @@ header {
 
 /* === DEALS LIST AND CONTAINER STYLES === */
 
-.deals_list {
+.deals_list, .results_bar, .deal_filters {
     width: 100%;
     max-width: 1200px;
     margin-top: 20px;
@@ -254,7 +254,7 @@ header {
 
 
 
-.deal_container {
+.deal_container, #results_bar, #deal_filters {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
