@@ -13,7 +13,8 @@ class User(ModelBase):
     pass_word = db.Column(db.String(50), nullable=False)
     is_admin = db.Column(db.Boolean, default=False, nullable=True)
     deals = db.relationship('Deal', back_populates='author', cascade="all, delete-orphan")
-    comment = db.relationship('Comment', back_populates='user', cascade="all, delete-orphan")
+    comments = db.relationship('Comment', back_populates='user', cascade="all, delete-orphan")
+    votes = db.relationship('Vote', back_populates='voter', cascade="all, delete-orphan")
 
 
     @validates('email')

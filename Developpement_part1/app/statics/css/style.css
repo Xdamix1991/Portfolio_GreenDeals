@@ -29,7 +29,7 @@ header {
     justify-content: space-between;
     align-items:start;
     padding: 15px 25px;
-    height: 200px;  /* Fixe la hauteur du header */
+    height: 200px;  /* hauteur du header */
     flex-wrap: nowrap;
 }
 
@@ -45,7 +45,7 @@ header {
     padding: 10px 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease-in-out;
-    height: 50px;  /* Fixe la hauteur de la logo box */
+    height: 50px;  /* hauteur de la logo box */
 }
 
 .logo:hover {
@@ -71,7 +71,7 @@ header {
     display: flex;
     justify-content: center;
     padding: 10px;
-    height: 30px;  /* Fixe la hauteur de la search bar */
+    height: 30px;  /* hauteur de la search bar */
 }
 
 #search-form {
@@ -83,7 +83,7 @@ header {
     width: 500px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease-in-out;
-    height: 25px;  /* Fixe la hauteur de la search form */
+    height: 25px;  /*  hauteur de la search form */
 }
 
 #search-form:hover {
@@ -112,7 +112,7 @@ header {
     border-radius: 20px;
     cursor: pointer;
     transition: background 0.2s ease-in-out;
-    height: 35px;  /* Fixe la hauteur du bouton de recherche */
+    height: 35px;  /*  hauteur du bouton de recherche */
 }
 
 .search-button:hover {
@@ -129,7 +129,7 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease-in-out;
     z-index: 10;
-    height: 20px;  /* Fixe la hauteur de la navigation */
+    height: 20px;  /*  hauteur de la navigation */
 }
 
 .nav:hover {
@@ -143,7 +143,7 @@ header {
     margin: 0;
     list-style: none;
     align-items: center;
-    height: 100%;  /* Assure que la hauteur du menu est égale à celle de la nav */
+    height: 100%;  /*hauteur du menu est égale à celle de la nav */
 }
 
 .nav ul li a {
@@ -154,7 +154,7 @@ header {
     padding: 8px 15px;
     border-radius: 20px;
     transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
-    height: 100%;  /* Fixe la hauteur des liens de la nav */
+    height: 100%;  /* hauteur des liens de la nav */
     display: flex;
     align-items: center;
 }
@@ -176,7 +176,7 @@ header {
     padding: 10px 15px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease-in-out;
-    height: 35px;  /* Fixe la hauteur du bouton de login */
+    height: 35px;  /*  hauteur du bouton de login */
 }
 
 .login button {
@@ -188,11 +188,11 @@ header {
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.2s ease-in-out;
-    height: 30px;  /* Fixe la hauteur du bouton à l'intérieur de login */
+    height: 30px;  /*  hauteur du bouton à l'intérieur de login */
 }
 
 .login button:hover {
-    background-color: #ff7100; /* Change le fond au survol */
+    background-color: #ff7100;
 }
 
 .filters_bar {
@@ -230,7 +230,7 @@ header {
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.2s ease-in-out;
-    height: 30px;  /* Fixe la hauteur du bouton de filtre */
+    height: 30px;  /*  hauteur du bouton de filtre */
 }
 
 .filter-button:hover {
@@ -242,7 +242,7 @@ header {
 
 .deals_list, .results_bar, .deal_filters {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin-top: 20px;
     padding: 20px;
     background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(147, 196, 125, 0) 100%);
@@ -261,12 +261,13 @@ header {
     gap: 20px;
 
     width: 100%;
-    max-width: 1100px;
+    max-width: 1300px;
 }
 
 .deal_details {
     display: flex;
     flex-direction: row;
+
     padding: 15px;
     gap: 20px;
     background-color: #fff;
@@ -284,24 +285,39 @@ header {
 
 /* Contenu de gauche : image */
 .deal_details .deal-image {
-    width: 150px;
+    width: 250px;
     min-width: 150px;
-    height: 150px;
+    height: auto;
     border-radius: 10px;
+    align-items: center;
     overflow: hidden;
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease-in-out;
 }
-
+.deal-image img {
+    width: 95%;
+    height: 200px;
+    background-color: rgba(36, 41, 35, 0.05);
+    border-radius: 25px;
+}
+.deal-image{
+    display: flex;
+    flex-direction: column;
+}
+.vote-buttons{
+    display: flex;
+    flex-direction: row;
+}
 .deal_details .deal-image:hover {
     transform: scale(1.1); /* Zoom sur l'image au survol */
 }
 
 /* Contenu de droite : informations */
 .deal_text_content {
-    max-width: 850px;
+    max-width: 980px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -318,13 +334,15 @@ header {
 .deal_details .title {
     font-size: 20px;
     font-weight: bold;
+    overflow-y: auto;
+
     color: #333;
     margin-bottom: 5px;
     transition: color 0.3s ease-in-out;
 }
 
 .deal_details .title:hover {
-    color: #e66000; /* Changer la couleur du titre au survol */
+    color: #e66000;
 }
 
 .deal_details .price {
@@ -347,7 +365,7 @@ header {
     flex: 1;
     height: 84px;
     max-height: 150px; /* Hauteur maximale pour environ 6 lignes */
-    overflow-y: auto; /* Ajoute un scrollbar si nécessaire */
+    overflow-y: auto; /* Ajoute un scrollbar */
     line-height: 1.5;
     margin-bottom: 50px; /* Espace pour le bouton en bas */
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -359,7 +377,7 @@ header {
     margin: 0;
 }
 
-/* Bas de carte : localisation, catégorie, etc. */
+/* Bas de carte : localisation, catégorie ... */
 .deal_footer {
     display: flex;
     display: row;
@@ -386,8 +404,8 @@ header {
 
 .deal_details .category:hover,
 .deal_details .comment:hover {
-    background-color: #e66000; /* Changer la couleur de fond au survol */
-    color: #fff; /* Changer la couleur du texte au survol */
+    background-color: #e66000;
+    color: #fff;
 }
 
 /* Bouton d'action */
@@ -407,9 +425,87 @@ header {
 }
 
 .deal-link:hover {
-    background-color: #e66000; /* Changer la couleur de fond du bouton au survol */
+    background-color: #e66000;
 }
 
+/* Styles pour les boutons */
+.vote-buttons {
+    display: flex;
+    gap: 20px;
+
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.green-vote {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    padding: 10px;
+    height: 20px;
+    border-radius: 25px;
+}
+
+.price-vote {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    align-items: center;
+    background: linear-gradient(to bottom, #e66000 0%, rgba(0, 0, 0, 0) 100%);
+    padding: 10px;
+    border-radius: 25px;
+}
+
+
+.vote-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.vote-btn {
+    background: none;
+    border: none;
+
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.vote-btn  img{
+    height: 20px;
+    border-radius: 50%;
+
+}
+.vote-btn:active {
+    transform: scale(1.1);
+}
+
+.green-up {
+    color: #ff5f5f;
+}
+
+.green-down {
+    color: #5faaff;
+}
+
+.price-up {
+    color: #ff5f5f;
+}
+
+.price-down {
+    color: #5faaff;
+}
+
+.vote-counts {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff5f5f;
+    margin: 5px 0;
+}
 /* === END DEALS STYLING === */
 
 footer {
@@ -465,15 +561,15 @@ footer p {
     border: 2px solid transparent; /* Ajouter une bordure transparente initiale */
     padding: 8px;
 
-    border-radius: 25px; /* Arrondir les coins de la bordure */
-    transition: all 0.3s ease; /* Pour adoucir l'effet hover */
+    border-radius: 25px;
+    transition: all 0.3s ease; /* adoucir l'effet hover */
 }
 
 .contact ul li a:hover,
 .navigation-footer ul li a:hover {
-    color: #fff; /* Changer la couleur du texte au survol */
-    background-color: #0c0b0b; /* Ajouter une couleur de fond au survol */
-    border-color: #fff; /* Ajouter une bordure blanche au survol */
+    color: #fff;
+    background-color: #0c0b0b;
+    border-color: #fff;
 }
 
 /* === MEDIA QUERIES === */
@@ -483,7 +579,7 @@ footer p {
         flex-direction: column;
         align-items: center;
         padding: 10px;
-        height: auto; /* Ajuste la hauteur du header */
+        height: auto;
     }
 
     .search-bar {

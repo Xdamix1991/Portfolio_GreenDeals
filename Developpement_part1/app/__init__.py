@@ -27,12 +27,13 @@ def create_app(config_classe=DevelopementConfig):
     from app.api.users import api as api_users
     from app.api.deals import api as api_deals
     from app.api.reviews import api as api_comment
+    from app.api.votes import api as api_vote
 
     api.add_namespace(api_users, path='/api/users')
     api.add_namespace(api_auth, path='/api/auth')
     api.add_namespace(api_deals, path='/api/deals')
     api.add_namespace(api_comment, path='/api/reviews')
-
+    api.add_namespace(api_vote, path='/api/votes')
     with app.app_context():
         db.create_all()
     return app

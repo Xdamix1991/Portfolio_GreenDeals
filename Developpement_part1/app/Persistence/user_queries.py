@@ -1,9 +1,10 @@
-from app.Persistence.repos_queries import UserRepository
+from app.Persistence.persistence_ext import UserRepository
 from app.Models.User import User
 
 
 class UserMethodes():
     def __init__(self):
+
         self.user_repos = UserRepository()
 
 

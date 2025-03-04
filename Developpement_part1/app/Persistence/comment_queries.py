@@ -1,20 +1,22 @@
 from app.Models.Review import Comment
-from app.Persistence.repos_queries import CommentRepository
-from app.Models.Deal import Deal
-from app.Models.User import User
-from app.Persistence.deal_queries import DealMethodes
 
-deal_facade = DealMethodes()
 
 class CommentMethodes():
     def __init__(self):
-        self.comment_repos = CommentRepository()
+        self._comment_repos = None  # Déclaration différée
+
+    @property
+    def comment_repos(self):
+        if self._comment_repos is None:  # Importation uniquement à la première utilisation
+            from app.Persistence.persistence_ext import CommentRepository
+            self._comment_repos = CommentRepository()
+        return self._comment_repos
 
     def create_comment(self, **data):
 
-            comment = Comment(**data)
-            self.comment_repos.add(comment)
-            return comment
+        comment = Comment(**data)
+        self.comment_repos.add(comment)
+        return comment
 
 
     def get_comment(self, comment_id):
@@ -38,3 +40,11 @@ class CommentMethodes():
             self.comment_repos.delete(comment_id)
             return "comment deleted"
         return
+
+    def get_comment_by_deal(self, deal_id):
+
+        comments = self.comment_repos.get_by_deal(deal_id)
+        return comments
+
+
+

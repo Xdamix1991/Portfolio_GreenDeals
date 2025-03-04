@@ -5,19 +5,25 @@ from app.Models.User import User
 from app.Models.Deal import Deal
 from app.Persistence.user_queries import UserMethodes
 from app.Persistence.deal_queries import DealMethodes
+from app.Persistence.vote_queries import VoteMethodes
+from app.Persistence.comment_queries import CommentMethodes
+
 
 api = Namespace(name='deals', description='deals operations')
 
 user_facade = UserMethodes()
 deal_facade = DealMethodes()
-
+vote_facade = VoteMethodes()
+comment_facade= CommentMethodes()
 
 
 
 deal_model = api.model('deal', {'title': fields.String(required=True),
                                 'link': fields.String(required=False), 'description': fields.String(required=True),
                                 'price': fields.Float(required=True), 'location': fields.String(required=True),
-                                'categorie': fields.String(required=True), 'reparability': fields.Float(required=False)})
+                                'categorie': fields.String(required=True), 'reparability': fields.Float(required=False),
+                                'price_vote_sum': fields.Integer(required=False),
+                                'grenn_vote_sum': fields.Integer(required=False)})
 
 
 @api.route('/')

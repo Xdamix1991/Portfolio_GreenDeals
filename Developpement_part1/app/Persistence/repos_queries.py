@@ -3,6 +3,7 @@ from abc import ABC,  abstractmethod
 from app.Models.User import User
 from app.Models.Deal import Deal
 from app.Models.Review import Comment
+from app.Models.Vote import Vote
 
 class Repository(ABC):
 
@@ -88,12 +89,23 @@ class SQLAlchemyRepository(Repository):
                     query = query.filter(column == kwargs[key])
 
 
-        result = query.all()
+        result = query.order_by(self.model.created_at.desc()).all()
         return result
 
     def get_user_by_att(self, **kwargs):
         user = db.session.query(self.model).filter_by(**kwargs).first()
         return user
+
+
+    def get_by_deal(self, deal_id):
+        objs = db.session.query(self.model).filter(self.model.deal_id == deal_id).all()
+        return objs
+
+    def get_user_vote(self, user_id, deal_id):
+        return db.session.query(self.model).filter(
+            self.model.user_id == user_id,
+            self.model.deal_id == deal_id
+        ).first()
 
 class UserRepository(SQLAlchemyRepository):
     def __init__(self):
@@ -106,3 +118,7 @@ class DealRepository(SQLAlchemyRepository):
 class CommentRepository(SQLAlchemyRepository):
     def __init__(self):
         super().__init__(Comment)
+
+class VoteRepository(SQLAlchemyRepository):
+    def __init__(self):
+        super().__init__(Vote)

@@ -1,11 +1,12 @@
-from app.Persistence.repos_queries import DealRepository
 from app.Persistence.user_queries import UserMethodes
 from app.Models.Deal import Deal
+from app.Persistence.persistence_ext import DealRepository
 
 user_facade = UserMethodes()
 
 class DealMethodes():
     def __init__(self):
+
         self.deal_repos = DealRepository()
 
     def create_deal(self, **data):
