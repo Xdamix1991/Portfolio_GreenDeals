@@ -5,7 +5,7 @@ const dealsContainer = document.querySelector('.deal_container');
 
 export function displayDeals(deals, container) {
     container.innerHTML = deals.map(deal => `
-            <div class="deal_details">
+            <div class="deal_details" deal-details="${deal.id}">
         <div class="deal-image">
             <img src="${deal.image || 'https://via.placeholder.com/150'}" alt="${deal.title}">
             <div class="vote-buttons">
@@ -47,20 +47,20 @@ export function displayDeals(deals, container) {
             <div class="description"><p>${deal.description}</p></div>
 
             <div class="deal_footer">
+                <div class="owner"><p>${deal.owner_pseudo}</p></div>
                 <div class="location"><p>📍 ${deal.location}</p></div>
-
                 <div class="category"><p>${deal.categorie}</p></div>
                 ${deal.reparability ? `<p class="reparability">Indice de réparabilité: ${deal.reparability}/10</p>` : ''}
-                <div class="comment"><a href="#">💬commentaires<a></div>
-                </div>
-
-            ${deal.link ? `<a href="${deal.link}" target="_blank" class="deal-link">Voir l'offre</a>` : ''}
+                <div class="comment"><button type="submit">${deal.comments_number}<img src="/statics/images/chat.png" alt="comments" class="comments-icon"></button></div>
+                ${deal.link ? `<a href="${deal.link}" target="_blank" class="deal-link">Voir l'offre</a>` : ''}
+            </div>
         </div>
     </div>
     `).join('');
 
 
     setupVoteButtons();
+    dealRedirecting();
 }
 
 
@@ -125,6 +125,78 @@ async function fetchDeals() {
     }
 }
 
+function dealRedirecting() {
+    const dealContainers = document.querySelectorAll('.deal_details');
+    dealContainers.forEach(container => {
+        container.addEventListener('click', (event) => {
+            // Vérifie si l'élément cliqué est un bouton de vote ou le bouton "Voir l'offre"
+            const isVoteButton = event.target.closest('.green-vote');
+            const isDealLink = event.target.closest('.deal-link');
+            const isVoteButton2 = event.target.closest('.price-vote');
+
+
+
+            if (!isVoteButton && !isDealLink && !isVoteButton2) {
+                const dealId = container.getAttribute('deal-details');
+                console.log(dealId)
+                localStorage.setItem('dealID', dealId)
+                window.location.href = 'deal/${dealId}`';
+            }
+        });
+    });
+}
+
+export function displayDeal(deal, container) {
+    container.innerHTML = `
+        <div class="deal_details" deal-details="${deal.id}">
+            <div class="deal-image">
+                <img src="${deal.image || 'https://via.placeholder.com/150'}" alt="${deal.title}">
+                <div class="vote-buttons">
+                    <div class="green-vote">
+                        <div class="vote-controls">
+                            <button class="vote-btn green-up" data-deal="${deal.id}" data-type="green" data-value="1">
+                                <img src="/statics/images/up.svg" alt="Vote up" class="vote-icon">
+                            </button>
+                            <div class="vote-counts">${deal.green_vote_sum}</div>
+                            <button class="vote-btn green-down" data-deal="${deal.id}" data-type="green" data-value="-1">
+                                <img src="/statics/images/down.svg" alt="Vote down" class="vote-icon">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="price-vote">
+                        <div class="vote-controls">
+                            <button class="vote-btn price-up" data-deal="${deal.id}" data-type="price" data-value="1">
+                                <img src="/statics/images/up.svg" alt="Vote up" class="vote-icon">
+                            </button>
+                            <div class="vote-counts">${deal.price_vote_sum}</div>
+                            <button class="vote-btn price-down" data-deal="${deal.id}" data-type="price" data-value="-1">
+                                <img src="/statics/images/down.svg" alt="Vote down" class="vote-icon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="deal_text_content">
+                <div class="deal_header">
+                    <div class="price"><p>${deal.price}€</p></div>
+                    <div class="title"><h3>${deal.title}</h3></div>
+                    <div class="reated_at"><h3>${deal.created_ago}</h3></div>
+                </div>
+                <div class="description"><p>${deal.description}</p></div>
+                <div class="deal_footer">
+                    <div class="owner"><p>${deal.owner_pseudo}</p></div>
+                    <div class="location"><p>📍 ${deal.location}</p></div>
+                    <div class="category"><p>${deal.categorie}</p></div>
+                    ${deal.reparability ? `<p class="reparability">Indice de réparabilité: ${deal.reparability}/10</p>` : ''}
+                    <div class="comment"><a href="#">💬commentaires<a></div>
+                </div>
+                ${deal.link ? `<a href="${deal.link}" target="_blank" class="deal-link">Voir l'offre</a>` : ''}
+            </div>
+        </div>
+    `;
+
+    setupVoteButtons();
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchDeals();

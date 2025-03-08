@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const lastName = document.getElementById('lastName').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const pseudo = document.getElementById('pseudo').value;
 
     // Validation des champs
     if (!email || !password || !lastName || !firstName) {
@@ -46,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
       first_name: firstName,
       last_name: lastName,
       email: email,
-      pass_word: password
+      pass_word: password,
+      pseudo: pseudo
     };
 
     try {

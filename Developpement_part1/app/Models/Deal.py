@@ -33,7 +33,11 @@ class Deal(ModelBase):
 
     @property
     def deal_comments(self):
-        return comment_facade.get_comment_by_deal(self.id)
+        comments = comment_facade.get_comment_by_deal(self.id)
+        return comments
+
+    def comments_number(self):
+        return len(self.deal_comments)
 
     def time_since_creation(self):
         delta = datetime.now() - self.created_at
@@ -50,6 +54,14 @@ class Deal(ModelBase):
 
             return self.created_at.strftime('%Y-%m-%d')
 
+    def get_pseudo(self):
+        from app.Persistence.user_queries import UserMethodes
+        user_facade = UserMethodes()
+        user = user_facade.get_user(self.user_id)
+        if user:
+            pseudo = user.pseudo
+            return pseudo
+        return
 
     def deal_to_dict(self):
         return {
@@ -58,6 +70,7 @@ class Deal(ModelBase):
             "owner": self.user_id,
             "title": self.title,
             "link": self.link or "",
+            "owner_pseudo": self.get_pseudo(),
             "description": self.description,
             "price": self.price,
             "categorie": self.categorie,
@@ -65,6 +78,7 @@ class Deal(ModelBase):
             "reparability": self.reparability,
             "price_vote_sum": self.price_vote_sum,
             "green_vote_sum": self.green_vote_sum,
-            "comments": [comment.comment_to_dict() for comment in self.deal_comments]
+            "comments": [comment.comment_to_dict() for comment in self.deal_comments],
+            "comments_number": self.comments_number() or 0
         }
 

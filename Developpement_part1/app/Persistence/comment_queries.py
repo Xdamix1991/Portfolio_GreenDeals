@@ -27,6 +27,8 @@ class CommentMethodes():
         comments = self.comment_repos.get_all()
         return comments
 
+
+
     def update_comment(self, comment_id, data):
         current_comment = self.comment_repos.get(comment_id)
         if current_comment:
@@ -46,5 +48,6 @@ class CommentMethodes():
         comments = self.comment_repos.get_by_deal(deal_id)
         return comments
 
-
+    def get_comment_by_userid(self, user_id):
+        return self.comment_repos.get_comment_by_user(user_id)
 

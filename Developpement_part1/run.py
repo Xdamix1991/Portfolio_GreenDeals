@@ -19,6 +19,9 @@ def mypage():
 def register():
     return render_template('register.html')
 
+@app.route('/deal/<deal_id>')
+def deal(deal_id):
+    return render_template('deal.html', deal_id=deal_id)
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)

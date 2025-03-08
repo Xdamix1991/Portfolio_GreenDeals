@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
           // Stocker le token et les données de l'utilisateur dans le localStorage
 
             localStorage.setItem('userData', JSON.stringify(data.user))
+            console.log(data.user)
         window.location.href = 'mypage'
       })
       .catch(error => {

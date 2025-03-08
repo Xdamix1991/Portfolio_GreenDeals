@@ -107,6 +107,10 @@ class SQLAlchemyRepository(Repository):
             self.model.deal_id == deal_id
         ).first()
 
+    def get_comment_by_user(self, user_id, deal_id):
+        return db.session.query(self.model).filter(
+            self.model.user_id == user_id).all()
+
 class UserRepository(SQLAlchemyRepository):
     def __init__(self):
         super().__init__(User)

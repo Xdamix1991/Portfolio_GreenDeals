@@ -11,6 +11,7 @@ class User(ModelBase):
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False)
     pass_word = db.Column(db.String(50), nullable=False)
+    pseudo = db.Column(db.String(50), nullable=True)
     is_admin = db.Column(db.Boolean, default=False, nullable=True)
     deals = db.relationship('Deal', back_populates='author', cascade="all, delete-orphan")
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete-orphan")
@@ -51,4 +52,5 @@ class User(ModelBase):
                 "user_id": self.id,
                  "first_name": self.first_name,
                  "last_name": self.last_name,
+                 "pseudo": self.pseudo
             }

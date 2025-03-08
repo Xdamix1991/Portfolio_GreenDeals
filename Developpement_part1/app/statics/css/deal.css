@@ -1,0 +1,492 @@
+
+
+
+
+/* === D_details CONTAINER === */
+/* Styles pour .d_details */
+.d_details {
+    width: 100%;
+    max-width: 1400px;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(147, 196, 125, 0) 100%);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contenu principal du deal */
+.d_details .deal_elements {
+    display: flex;
+    width: 1200px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Styles pour les boutons de vote */
+.d_details .vote-buttons {
+    display: flex;
+    gap: 20px;
+
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+}
+.d_details .green-vote {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    padding: 10px;
+    height: 20px;
+    border-radius: 25px;
+}
+
+.d_details .price-vote {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    align-items: center;
+    background: linear-gradient(to bottom, #e66000 0%, rgba(0, 0, 0, 0) 100%);
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.d_details .vote-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.d_details .vote-btn {
+    background: none;
+    border: none;
+
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.d_details .vote-controls  img{
+    height: 20px;
+    border-radius: 50%;
+}
+
+.d_details .vote-btn:hover {
+    transform: scale(1.1);
+}
+
+.d_details .vote-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Style de la carte du deal */
+.d_details .deal_detail {
+    display: flex;
+    align-items: center;
+    width: 1300px;
+
+    gap: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.d_details .deal-image {
+
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);   width: 250px;
+    min-width: 150px;
+
+    border-radius: 25px;
+    align-items: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    transition: transform 0.3s ease-in-out;
+    width: 30%;
+    height: 100%;
+}
+
+
+/* Image du deal */
+
+
+/* Contenu textuel du deal */
+.d_details .deal_text_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* En-tête du deal */
+.d_details .deal_header {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.reated_at {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.d_details .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e44d26;
+}
+
+/* Pied du deal */
+.d_details .deal_footer {
+    display: flex;
+    display: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+/* Lien du deal */
+.d_details .deal-link {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+
+    align-items: center;
+    width: 200px;
+    background: #ff6600;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.d_details .deal-link:hover {
+    background: #e55b00;
+}
+
+/* Section description */
+.d_details .description {
+    background: #fff;
+    width: 1300px;
+    gap: 35px;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.d_details .description p{
+    background: #fff;
+    font-weight: bolder;
+    font-size: 25px;
+    gap: 35px;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+/* Commentaires */
+
+.comments-list
+.deal_comments p {
+    font-weight: bold;
+}
+
+/* Section pour ajouter un commentaire */
+.add_comment {
+    margin-top: 15px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 6px;
+}
+
+.add_comment label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.add_comment textarea {
+    width: 1200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.add_comment .submit_comment {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.add_comment .submit_comment:hover {
+    background: #218838;
+}
+
+/* Liste des commentaires */
+.comments-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 1300px;
+    justify-content: space-around;
+    row-gap: 15px;
+}
+.comments-section .comment-text {
+
+    width: 98%;
+    color: #0c0b0b;
+    padding: auto;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    min-height: 35px;
+
+}
+
+.comments-section .comment-text p {
+    margin-left: 10px;
+    margin-top: 5px;
+    color: #0c0b0b;
+}
+
+.comment-item {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.comment-user {
+    font-weight: bold;
+}
+
+.comment-text {
+    margin-top: 5px;
+}
+
+.comment-date {
+    font-size: 0.8em;
+    color: #888;
+}
+
+
+
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    height: 25px ;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.share-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.share-btn:hover {
+    background-color: #0056b3;
+}
+/* === footer === */
+
+footer {
+
+    background-size: cover; /* Pour que l'image couvre tout l'arrière-plan du footer */
+    background-position: center; /* Pour centrer l'image */
+    background-repeat: no-repeat; /* Pour éviter que l'image se répète */
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    background: linear-gradient(to top, rgba(147, 196, 125, 1) 0%, rgba(147, 196, 125, 0) 100%), url('../images/basimage.jpg');;
+    padding: 20px;
+    background-size: contain;
+    margin-top: auto;
+    height: 400px;
+}
+
+footer p {
+    text-align: center;
+    margin: 10px 0 0;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.navigation-footer ul,
+.contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation-footer ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.contact ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact ul li a,
+.navigation-footer ul li a {
+    color: #0c0b0b;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid transparent; /* Ajouter une bordure transparente initiale */
+    padding: 8px;
+
+    border-radius: 25px;
+    transition: all 0.3s ease; /* adoucir l'effet hover */
+}
+
+.contact ul li a:hover,
+.navigation-footer ul li a:hover {
+    color: #fff;
+    background-color: #0c0b0b;
+    border-color: #fff;
+}
+
+/* === MEDIA QUERIES === */
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        height: auto;
+    }
+
+    .search-bar {
+        margin: 15px 0;
+    }
+
+    #search-form {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .logo, .login {
+        margin: 10px 0;
+        font-size: 24px;
+        height: 50px;  /* Assure que la logo et le login box ont la même hauteur */
+    }
+
+    .nav {
+        position: relative;
+        left: 0;
+        margin-top: 15px;
+        padding: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        height: auto; /* Ajuste la hauteur du menu */
+    }
+
+    .nav ul li a {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .filters_bar {
+        padding: 10px;
+        gap: 10px;
+        font-size: 16px;
+    }
+
+    .deal_container {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    footer p {
+        font-size: 14px;
+    }
+
+    .navigation-footer ul,
+    .contact ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .navigation-footer ul li a,
+    .contact ul li a {
+        font-size: 16px;
+        padding: 8px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1000px) {
+    header {
+        padding: 20px;
+    }
+
+    .search-bar {
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+
+    .search-button {
+        padding: 8px 20px;
+    }
+
+    .filters_bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filter-button {
+        padding: 10px 20px;
+    }
+}

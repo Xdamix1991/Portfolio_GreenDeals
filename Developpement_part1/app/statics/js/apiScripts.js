@@ -56,3 +56,4 @@ function createModelService(modelName) {
 export const dealService = createModelService('deals');
 export const userService = createModelService('users');
 export const VoteService = createModelService('votes');
+export const CommentService = createModelService('comments')
