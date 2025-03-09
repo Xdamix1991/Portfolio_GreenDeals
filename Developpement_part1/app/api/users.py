@@ -27,14 +27,17 @@ class UserReource(Resource):
 
     def post(self):
         data = api.payload
+        print("jai recu ici le user", data)
         user = user_facade.get_user_by_email(data['email'])
         if user :
-            return {"message": "user already exist"}, 400
-        else:
+            raise Exception("Email already registered")
+        try:
             new_user = user_facade.create_user(**data)
-            return {'id': new_user.id,
-                "message": "user was created succesfully"}, 201
-
+            return {'id': new_user.id, "message": "User created successfully"}, 201
+        except Exception as e:
+            # Gestion des erreurs lors de la création de l'utilisateur
+            print(f"Error during user creation: {str(e)}")
+            return {'error': f"An error occurred: {str(e)}"}, 500
 
 @api.route('/<user_id>')
 

@@ -29,7 +29,7 @@ class User(ModelBase):
 
     @validates('pass_word')
     def validate_password(self, key, password):
-        regex = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$"
+        regex = r"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
         if not password:
             raise ValueError("you must enter a password")
         if isinstance(password, bytes):

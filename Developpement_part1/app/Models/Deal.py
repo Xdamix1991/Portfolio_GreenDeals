@@ -3,6 +3,7 @@ from app.Models.queriesextension import VoteMethodes
 from app.Persistence.comment_queries import CommentMethodes
 from datetime import datetime, timedelta
 from app.db_extension import db
+import base64
 
 vote_facade = VoteMethodes()
 comment_facade = CommentMethodes()
@@ -12,6 +13,7 @@ class Deal(ModelBase):
 
     user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=False )
     title = db.Column(db.String(128), nullable=False)
+    image = db.Column(db.LargeBinary, nullable=True)
     link = db.Column(db.String(2048), nullable=True)
     description = db.Column(db.String(2048), nullable=False)
     price = db.Column(db.Float(10), nullable=False)
@@ -63,11 +65,17 @@ class Deal(ModelBase):
             return pseudo
         return
 
+    def get_image(self):
+        if self.image:
+            return base64.b64encode(self.image).decode('utf-8')
+        return None
+
     def deal_to_dict(self):
         return {
             "id": self.id,
             'created_ago': self.time_since_creation(),
             "owner": self.user_id,
+            "image": self.get_image() or None,
             "title": self.title,
             "link": self.link or "",
             "owner_pseudo": self.get_pseudo(),

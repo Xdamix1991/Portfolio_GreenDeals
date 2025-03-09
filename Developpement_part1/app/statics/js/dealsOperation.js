@@ -38,15 +38,62 @@ document.addEventListener('DOMContentLoaded', function(event) {
   if (dealForm) {
     dealForm.addEventListener('submit', async function(event) {
       event.preventDefault();
-      const deal_data = {
-        title: document.getElementById('title').value,
-        link: document.getElementById('lien').value,
-        description: document.getElementById('description').value,
-        price: document.getElementById('price').value,
-        categorie: document.getElementById('categorie').value,
-        location: document.getElementById('location').value,
-        reparability: document.getElementById('reparability').value,
-      };
+
+      // Récupérer l'image du formulaire
+      const fileInput = document.getElementById('image');
+      const file = fileInput.files[0];
+
+      // Si une image est sélectionnée
+      if (file) {
+        // Créer un objet FileReader pour lire l'image
+        const reader = new FileReader();
+
+        reader.onloadend = async function () {
+          // L'image est maintenant en base64
+          const base64Image = reader.result.split(',')[1]; // Supprimer la partie "data:image/png;base64,"
+
+          // Créer un objet deal_data avec les autres informations
+          const deal_data = {
+            title: document.getElementById('title').value,
+            image: base64Image,  // Image encodée en base64
+            link: document.getElementById('lien').value,
+            description: document.getElementById('description').value,
+            price: document.getElementById('price').value,
+            categorie: document.getElementById('categorie').value,
+            location: document.getElementById('location').value,
+            reparability: document.getElementById('reparability').value,
+          };
+
+          try {
+            // Envoyer les données au service backend
+            const result = await dealService.create(deal_data, {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              credentials: 'include',
+            });
+
+            alert('Votre Deal a été posté avec succès');
+            dealForm.reset();
+          } catch (error) {
+            alert('Erreur lors de la création du deal: ' + error.message);
+          }
+        };
+
+        // Lire le fichier comme une URL Data (Base64)
+        reader.readAsDataURL(file);
+      } else {
+        // Si aucune image n'est sélectionnée, envoyer les données sans image
+        const deal_data = {
+          title: document.getElementById('title').value,
+          image: null,
+          link: document.getElementById('lien').value,
+          description: document.getElementById('description').value,
+          price: document.getElementById('price').value,
+          categorie: document.getElementById('categorie').value,
+          location: document.getElementById('location').value,
+          reparability: document.getElementById('reparability').value,
+        };
 
       try {
         const result = await dealService.create(deal_data, {
@@ -60,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         dealForm.reset();
       } catch (error) {
         alert('Erreur lors de la création du deal: ' + error.message);
+      }
       }
     });
   }

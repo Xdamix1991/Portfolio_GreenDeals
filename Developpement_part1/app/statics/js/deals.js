@@ -7,7 +7,7 @@ export function displayDeals(deals, container) {
     container.innerHTML = deals.map(deal => `
             <div class="deal_details" deal-details="${deal.id}">
         <div class="deal-image">
-            <img src="${deal.image || 'https://via.placeholder.com/150'}" alt="${deal.title}">
+            <img src="${deal.image ? `data:image/jpeg;base64,${deal.image}` : 'https://via.placeholder.com/150'}" alt="${deal.title}">
             <div class="vote-buttons">
     <div class="green-vote">
         <div class="vote-controls">
@@ -150,7 +150,7 @@ export function displayDeal(deal, container) {
     container.innerHTML = `
         <div class="deal_details" deal-details="${deal.id}">
             <div class="deal-image">
-                <img src="${deal.image || 'https://via.placeholder.com/150'}" alt="${deal.title}">
+                <img src="${deal.image ? `data:image/jpeg;base64,${deal.image}` : 'https://via.placeholder.com/150'}" alt="${deal.title}">
                 <div class="vote-buttons">
                     <div class="green-vote">
                         <div class="vote-controls">

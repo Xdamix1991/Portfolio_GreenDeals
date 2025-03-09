@@ -7,7 +7,7 @@ from app.Persistence.user_queries import UserMethodes
 from app.Persistence.deal_queries import DealMethodes
 from app.Persistence.vote_queries import VoteMethodes
 from app.Persistence.comment_queries import CommentMethodes
-
+import base64
 
 api = Namespace(name='deals', description='deals operations')
 
@@ -19,6 +19,7 @@ comment_facade= CommentMethodes()
 
 
 deal_model = api.model('deal', {'title': fields.String(required=True),
+                                'image': fields.String(required=False),
                                 'link': fields.String(required=False), 'description': fields.String(required=True),
                                 'price': fields.Float(required=True), 'location': fields.String(required=True),
                                 'categorie': fields.String(required=True), 'reparability': fields.Float(required=False),
@@ -45,6 +46,17 @@ class DealsResource(Resource):
         print(user_id)
         data = api.payload
         data['user_id'] = user_id
+        # gerer une image en base64
+
+        image_base64 = data.get('image')
+        if image_base64:
+            try:
+                data['image'] = base64.b64decode(image_base64)
+            except Exception:
+                return {'message': 'Image invalide, impossible de la décoder'}, 400
+        else:
+            data['image'] = None
+
         new_deal = deal_facade.create_deal(**data)
         return new_deal.deal_to_dict(), 200
 

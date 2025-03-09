@@ -51,3 +51,41 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const loginLink = document.querySelector('.login');
+    const loginButton = loginLink.querySelector('button');
+    const userData = JSON.parse(localStorage.getItem('userData'));
+
+    if (userData) {
+
+        loginButton.textContent = userData.pseudo;
+        loginLink.href = "#";
+
+
+        loginButton.addEventListener('mouseover', function() {
+            loginButton.textContent = 'Logout';
+        });
+
+
+        loginButton.addEventListener('mouseout', function() {
+            loginButton.textContent = userData.pseudo;
+        });
+
+        loginButton.addEventListener('click', function() {
+            if (loginButton.textContent === 'Logout') {
+                handleLogout();
+            }
+        });
+    }
+});
+function handleLogout() {
+    if (confirm('Voulez-vous vraiment vous déconnecter ?')) {
+        fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
+            .then(() => {
+                localStorage.removeItem('userData');
+                window.location.href = 'home'; 
+            })
+            .catch(error => console.error('Erreur de déconnexion:', error));
+    }
+}

@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Envoi de la requête
       const response = await postRequest('/api/users', registerData);
 
-      if (response.error) {
+      if (!response && response.error) {
         alert('Erreur lors de l\'inscription : ' + response.message);
         return;
       }

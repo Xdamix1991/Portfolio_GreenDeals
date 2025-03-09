@@ -29,7 +29,7 @@ export function displayDeal(deal, container) {
   container.innerHTML = `
     <div class="deal_detail" deal-details="${deal.id}">
       <div class="deal-image">
-        <img src="${deal.image || 'https://via.placeholder.com/150'}" alt="${deal.title}">
+        <img src="${deal.image ? `data:image/jpeg;base64,${deal.image}` : 'https://via.placeholder.com/150'}" alt="${deal.title}">
         <div class="vote-buttons">
           <div class="green-vote">
             <div class="vote-controls">
@@ -82,30 +82,24 @@ export function displayDeal(deal, container) {
       <div class="description_details">${deal.description}</div>
     </div>
       <div class="comments-section">
-  <h3>Commentaires</h3>
-                <div class="add_comment">
-                <div class="comment_form">
-                    <label for="comment">Ajouter un commentaire :</label>
-                    <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
-                    <button type="submit" class="submit_comment">Poster</button>
-                </div>
+        <h3>Commentaires</h3>
+
+        <div class="comments-list">
+          ${deal.comments.length > 0 ? deal.comments.map(comment => `
+            <div class="comment-item">
+              <div class="comment-user">
+              <p><strong>Utilisateur ${comment.pseudo} :</strong></p>
+              </div>
+              <div class="comment-text">
+              <p>${comment.comment}</p>
+              </div>
+              <div class="comment-date">
+              <small> ${comment.created_ago}</small>
             </div>
-  <div class="comments-list">
-    ${deal.comments.length > 0 ? deal.comments.map(comment => `
-      <div class="comment-item">
-        <div class="comment-user">
-        <p><strong>Utilisateur ${comment.pseudo} :</strong></p>
+            </div>
+          `).join('') : '<p>Aucun commentaire pour ce deal.</p>'}
         </div>
-        <div class="comment-text">
-        <p>${comment.comment}</p>
-        </div>
-        <div class="comment-date">
-        <small> ${comment.created_ago}</small>
       </div>
-      </div>
-    `).join('') : '<p>Aucun commentaire pour ce deal.</p>'}
-  </div>
-</div>
 
   `;
 

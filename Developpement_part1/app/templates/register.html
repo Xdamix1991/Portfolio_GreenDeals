@@ -49,22 +49,24 @@
         <div class="register_container">
             <p>Remplissez les champs</p>
             <div class="regiser_cards">
-                <label for="pseudo">Pseudo</label>
-                <input type="text" id="pseudo" placeholder="choisissez un peudo">
+                <form id="register_form">
+                    <label for="pseudo">Pseudo</label>
+                    <input type="text" id="pseudo" placeholder="choisissez un peudo">
 
-                <label for="firstName">Nom</label>
-                <input type="text" id="firstName" placeholder="Nom" required>
+                    <label for="firstName">Nom</label>
+                    <input type="text" id="firstName" placeholder="Nom" required>
 
-                <label for="lastName">Prénom</label>
-                <input type="text" id="lastName" placeholder="Prénom" required>
+                    <label for="lastName">Prénom</label>
+                    <input type="text" id="lastName" placeholder="Prénom" required>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Votre Email" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Votre Email" required>
 
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" placeholder="Choisissez un mot de passe" required>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" placeholder="Choisissez un mot de passe" required>
 
-                <button type="submit" id="soumettre">Soumettre</button>
+                    <button type="submit" id="soumettre">Soumettre</button>
+            </form>
             </div>
         </div>
     </main>
@@ -86,7 +88,8 @@
         <p>&copy; 2025 GreenDeals. Tous droits réservés. Créé à <a href="https://www.holbertonschool.com" target="_blank">Holberton School</a>.</p>
     </footer>
     <script src="{{ url_for('static', filename='js/regScript.js')}}"></script>
-    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/login.js')}}"></script>
+
 
 </body>
 

@@ -98,6 +98,9 @@
       <label for="title">Titre du deal</label>
       <input type="text" id="title" name="title" required>
 
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image" >
+
       <label for="lien">Lien</label>
       <input type="text" id="lien" name="link" required>
 
@@ -187,5 +190,6 @@
 
     <script   src="{{url_for('static', filename='/js/dealsOperation.js')}}" type="module"></script>
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script   src="{{url_for('static', filename='/js/login.js')}}" type="module"></script>
 </body>
 </html>

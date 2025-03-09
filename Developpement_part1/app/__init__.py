@@ -34,6 +34,7 @@ def create_app(config_classe=DevelopementConfig):
     from app.api.reviews import api as api_comment
     from app.api.votes import api as api_vote
     from app.api.comments import api as comment_api
+    from app.api.logOut import api as api_logout
 
     api.add_namespace(api_users, path='/api/users')
     api.add_namespace(api_auth, path='/api/auth')
@@ -41,6 +42,8 @@ def create_app(config_classe=DevelopementConfig):
     api.add_namespace(api_comment, path='/api/reviews')
     api.add_namespace(api_vote, path='/api/votes')
     api.add_namespace(comment_api, path='/api/comments')
+    api.add_namespace(api_logout, path='/api/logout')
+    
     with app.app_context():
         db.create_all()
     return app
