@@ -1,4 +1,5 @@
 html {
+    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -575,14 +576,25 @@ footer p {
 
 /* === MEDIA QUERIES === */
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1388px){
+    html {
+        width: 100%;
+    }
     header {
+        display: flex;
+        justify-content: center;
+        width: 100%;
         flex-direction: column;
         align-items: center;
         padding: 10px;
         height: auto;
     }
 
+    .search_and_nav {
+        width: fit-content;
+        flex-direction: row;
+        gap: 15px;
+    }
     .search-bar {
         margin: 15px 0;
     }
@@ -594,12 +606,16 @@ footer p {
     }
 
     .logo, .login {
+        width: fit-content;
         margin: 10px 0;
         font-size: 24px;
         height: 50px;  /* Assure que la logo et le login box ont la même hauteur */
     }
 
     .nav {
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
         position: relative;
         left: 0;
         margin-top: 15px;
@@ -609,7 +625,7 @@ footer p {
     }
 
     .nav ul {
-        flex-direction: column;
+        flex-direction: row;
         gap: 15px;
         text-align: center;
         height: auto; /* Ajuste la hauteur du menu */
@@ -621,6 +637,9 @@ footer p {
     }
 
     .filters_bar {
+
+        flex-direction: row;
+        justify-content: center;
         padding: 10px;
         gap: 10px;
         font-size: 16px;
@@ -631,8 +650,9 @@ footer p {
     }
 
     footer {
-
+        display: flex;
         flex-direction: column;
+        justify-content: flex-end;
         align-items: center;
         padding: 15px;
     }
@@ -657,30 +677,3 @@ footer p {
     }
 }
 
-@media (max-width: 1000px) {
-    header {
-        padding: 20px;
-    }
-
-    .search-bar {
-        width: 80%;
-        margin: 20px auto;
-    }
-
-    .logo {
-        font-size: 26px;
-    }
-
-    .search-button {
-        padding: 8px 20px;
-    }
-
-    .filters_bar {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .filter-button {
-        padding: 10px 20px;
-    }
-}
