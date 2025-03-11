@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
             image: base64Image,  // Image encodée en base64
             link: document.getElementById('lien').value,
             description: document.getElementById('description').value,
+            price_before: document.getElementById('price_before').value,
             price: document.getElementById('price').value,
             categorie: document.getElementById('categorie').value,
             location: document.getElementById('location').value,
@@ -89,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           image: null,
           link: document.getElementById('lien').value,
           description: document.getElementById('description').value,
+          price_before: document.getElementById('price_before').value,
           price: document.getElementById('price').value,
           categorie: document.getElementById('categorie').value,
           location: document.getElementById('location').value,
@@ -171,6 +173,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           document.getElementById('update_title').value = deal.title;
           document.getElementById('update_lien').value = deal.link;
           document.getElementById('update_description').value = deal.description;
+          document.getElementById('update_price_before').value = deal.price_before;
           document.getElementById('update_price').value = deal.price;
           document.getElementById('update_categorie').value = deal.categorie;
           document.getElementById('update_location').value = deal.location;
@@ -191,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         title: document.getElementById('update_title').value,
         link: document.getElementById('update_lien').value,
         description: document.getElementById('update_description').value,
+        price_before: document.getElementById('update_price_before').value,
         price: document.getElementById('update_price').value,
         categorie: document.getElementById('update_categorie').value,
         location: document.getElementById('update_location').value,

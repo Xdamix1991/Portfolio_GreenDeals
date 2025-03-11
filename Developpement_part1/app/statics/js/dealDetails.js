@@ -1,9 +1,9 @@
 import { dealService, userService, VoteService, CommentService } from './apiScripts.js';
-import { setupVoteButtons } from './deals.js';
+// Import both setupVoteButtons AND handleVote function
+import { setupVoteButtons, handleVote } from './deals.js';
 
 const containerDeal = document.querySelector('.d_details');
 const containerComment = document.querySelector('.deal_comments');
-
 
 const deal_id = localStorage.getItem('dealID');
 
@@ -23,13 +23,75 @@ async function fetchDeal() {
   }
 }
 
+// Implement your own handleVote function specifically for the detail page
+// if you can't import it properly from deals.js
+export async function detailPageHandleVote(event) {
+  // Find the closest button element since event.target might be the image
+  const button = event.target.closest('.vote-btn');
+  if (!button) return; // Exit if we didn't click on a vote button
 
+  const currentDeal = button.closest('.deal_detail');
+  const dealId = currentDeal.getAttribute('deal-details');
+  const voteType = button.getAttribute('data-type');
+  const value = parseInt(button.getAttribute('data-value'));
+
+  console.log(`dealId: ${dealId}`);
+  console.log(`voteType: ${voteType}`);
+  console.log(`value: ${value}`);
+
+  try {
+    const voteData = {
+      deal_id: dealId
+    };
+
+    // Add the appropriate vote type
+    if (voteType === 'green') {
+      voteData.green_vote = value;
+    } else if (voteType === 'price') {
+      voteData.price_vote = value;
+    }
+
+    console.log('Sending vote data:', voteData); // Log the data being sent
+
+    const response = await VoteService.create(voteData);
+
+    if (response.success) {
+      const dealContainer = button.closest('.deal_detail');
+
+      if (voteType === 'green') {
+        const greenVoteDisplay = dealContainer.querySelector('.green-vote .vote-counts');
+        greenVoteDisplay.textContent = response.green_vote_sum;
+      } else if (voteType === 'price') {
+        const priceVoteDisplay = dealContainer.querySelector('.price-vote .vote-counts');
+        priceVoteDisplay.textContent = response.price_vote_sum;
+      }
+    } else {
+      console.error('Erreur lors du vote:', response.message);
+    }
+  } catch (error) {
+    console.error('Erreur lors du vote:', error);
+  }
+}
+
+// Create a specific setup function for the detail page votes
+function setupDetailPageVoteButtons() {
+  const voteButtons = document.querySelectorAll('.vote-btn');
+
+  voteButtons.forEach(button => {
+    // First remove any existing event listeners to prevent duplicates
+    button.removeEventListener('click', detailPageHandleVote);
+    // Add the event listener
+    button.addEventListener('click', detailPageHandleVote);
+  });
+
+  console.log(`Set up ${voteButtons.length} vote buttons`);
+}
 
 export function displayDeal(deal, container) {
   container.innerHTML = `
     <div class="deal_detail" deal-details="${deal.id}">
       <div class="deal-image">
-        <img src="${deal.image ? `data:image/jpeg;base64,${deal.image}` : 'https://via.placeholder.com/150'}" alt="${deal.title}">
+        <img class="article" src="${deal.image ? `data:image/jpeg;base64,${deal.image}` : 'https://via.placeholder.com/150'}" alt="${deal.title}">
         <div class="vote-buttons">
           <div class="green-vote">
             <div class="vote-controls">
@@ -57,27 +119,28 @@ export function displayDeal(deal, container) {
       </div>
       <div class="deal_text_content">
         <div class="deal_header">
-        <div class="owner"><p>${deal.owner_pseudo}</p></div>
+        <div class="user"><img src="/statics/images/user.png" alt="user icon" class="user-icon"><p>  ${deal.owner_pseudo}</p></div>
           <div class="reated_at">
           <div class="comment"><button type="submit">${deal.comments_number}<img src="/statics/images/chat.png" alt="comments" class="comments-icon"></button></div>
           <button id="shareButton" class="share-btn"><img src="/statics/images/partage.png" alt="Partager" class="share-icon">partager</button>
           <h3>${deal.created_ago}</h3>
           </div>
         </div>
-          <div class="titile_price">
+          <div class="title_price">
           <div class="title"><h3>${deal.title}</h3></div>
-          <div class="price"><p>${deal.price}€</p></div>
+          <div class="price"><p>${deal.reduction}€</p></div>
           </div>
         <div class="deal_footer">
           <div class="location"><p>📍 ${deal.location}</p></div>
           <div class="category"><p>${deal.categorie}</p></div>
-          ${deal.reparability ? `<p class="reparability">Indice de réparabilité: ${deal.reparability}/10</p>` : ''}
+          ${deal.reparability ? `<p class="reparability"><img src="/statics/images/idr.png" alt="reparability" class="reparability-icon"> ${deal.reparability}/10</p>` : ''}
           ${deal.link ? `<a href="${deal.link}" target="_blank" class="deal-link">Voir l'offre</a>` : ''}
         </div>
 
       </div>
     </div>
     <div class="description">
+
       <p>Description</p>
       <div class="description_details">${deal.description}</div>
     </div>
@@ -103,10 +166,9 @@ export function displayDeal(deal, container) {
 
   `;
 
-  setupVoteButtons();
+  // Use our detail-page specific setup function
+  setupDetailPageVoteButtons();
 }
-
-
 
 async function addComment() {
   const add_comment_btn = document.querySelector('.submit_comment');
@@ -139,18 +201,17 @@ async function addComment() {
     try {
       await CommentService.create(data);
       alert('Commentaire ajouté avec succès');
-
+      // Reload the deal to show the new comment
+      fetchDeal();
+      // Clear the comment field
+      document.getElementById('comment').value = '';
     } catch (error) {
       alert('Erreur lors de l\'ajout du commentaire : ' + error.message);
     }
   });
 }
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
   fetchDeal();
-
   addComment();
-
 });

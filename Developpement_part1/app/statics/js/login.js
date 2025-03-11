@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const loginButton = document.getElementById('loginButton');
 
   // Ajouter un écouteur d'événement pour le clic sur le bouton
+    if (!loginButton) {
+        return;
+    }
   loginButton.addEventListener('click', function (event) {
       event.preventDefault(); // Empêcher le comportement par défaut du formulaire
 
@@ -84,7 +87,7 @@ function handleLogout() {
         fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
             .then(() => {
                 localStorage.removeItem('userData');
-                window.location.href = 'home'; 
+                window.location.href = 'home';
             })
             .catch(error => console.error('Erreur de déconnexion:', error));
     }

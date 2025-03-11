@@ -4,12 +4,13 @@
     margin-top: 20px;
     padding: 30px;
     background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(147, 196, 125, 0) 100%);
-    border-radius: 15px;
+    border-radius: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease-in-out;
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 .register_container:hover {

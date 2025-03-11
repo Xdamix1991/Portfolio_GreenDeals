@@ -20,8 +20,10 @@ comment_facade= CommentMethodes()
 
 deal_model = api.model('deal', {'title': fields.String(required=True),
                                 'image': fields.String(required=False),
-                                'link': fields.String(required=False), 'description': fields.String(required=True),
+                                'link': fields.String(required=False), 'description': fields.String(required=False),
+                                'price_before': fields.Float(required=False),
                                 'price': fields.Float(required=True), 'location': fields.String(required=True),
+                                'reparability': fields.Float(required=False),
                                 'categorie': fields.String(required=True), 'reparability': fields.Float(required=False),
                                 'price_vote_sum': fields.Integer(required=False),
                                 'grenn_vote_sum': fields.Integer(required=False)})

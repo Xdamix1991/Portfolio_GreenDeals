@@ -16,6 +16,7 @@ class Deal(ModelBase):
     image = db.Column(db.LargeBinary, nullable=True)
     link = db.Column(db.String(2048), nullable=True)
     description = db.Column(db.String(2048), nullable=False)
+    price_before = db.Column(db.Float(10), nullable=True)
     price = db.Column(db.Float(10), nullable=False)
     location = db.Column(db.String(256), nullable=False)
     categorie = db.Column(db.String(256), nullable=False)
@@ -70,6 +71,12 @@ class Deal(ModelBase):
             return base64.b64encode(self.image).decode('utf-8')
         return None
 
+    def reduction(self):
+        if self.price_before:
+            reduction = round((self.price_before - self.price) / self.price_before * 100)
+            return f"{self.price_before}€ (-{reduction}%) = {self.price}€"
+        return self.price
+
     def deal_to_dict(self):
         return {
             "id": self.id,
@@ -81,9 +88,11 @@ class Deal(ModelBase):
             "owner_pseudo": self.get_pseudo(),
             "description": self.description,
             "price": self.price,
+            "price_before": self.price_before ,
+            "reduction": self.reduction(),
             "categorie": self.categorie,
             "location": self.location,
-            "reparability": self.reparability,
+            "reparability": self.reparability or f"N/a",
             "price_vote_sum": self.price_vote_sum,
             "green_vote_sum": self.green_vote_sum,
             "comments": [comment.comment_to_dict() for comment in self.deal_comments],

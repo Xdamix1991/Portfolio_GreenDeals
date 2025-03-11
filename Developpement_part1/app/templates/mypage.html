@@ -102,7 +102,7 @@
         <input type="file" id="image" name="image" >
 
       <label for="lien">Lien</label>
-      <input type="text" id="lien" name="link" required>
+      <input type="text" id="lien" name="link" >
 
       <label for="description">Description</label>
       <textarea id="description" name="description" required></textarea>
@@ -113,8 +113,11 @@
       <label for="location">Localisation</label>
       <input type="text" id="location" name="location" required>
 
+      <label for="price_before">Prix avant</label>
+      <input type="number" id="price_before" name="price_before" >
+
       <label for="price">Prix</label>
-      <input type="number" id="price" name="price" step="0.01" required>
+      <input type="number" id="price" name="price" >
 
       <label for="reparability">IDR</label>
       <input type="number" id="reparability"   name="reparability" >
@@ -146,6 +149,12 @@
               <label for="update_description">Description</label>
               <textarea id="update_description" required></textarea>
             </div>
+
+            <div class="form-group">
+              <label for="update_price_before">Prix avant</label>
+              <input type="number" id="update_price_before">
+            </div>
+
             <div class="form-group">
               <label for="update_price">Prix</label>
               <input type="number" id="update_price" required>
@@ -171,22 +180,57 @@
         </div>
 </main>
 
-    <footer>
-        <div class="contact">
-                <ul>
-                    <li><a href="#">gitHub</a></li>
-                    <li><a href="#">Linked_in</a></li>
-                    <li><a href="#">Holberton School</a></li>
-                </ul>
-        </div>
-        <div class="navigation-footer">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#"></a>Contacts</li>
-            </ul>
-        </div>
-        <p>&copy; 2025 GreenDeals. Tous droits réservés. Créé à <a href="https://www.holbertonschool.com" target="_blank">Holberton School</a>.</p>
-    </footer>
+<footer>
+  <div class="contact">
+      <ul>
+          <li>
+              <a href="https://github.com/Xdamix1991">
+                  <img src="/statics/images/github.png" alt="GitHub icon" class="github-icon">
+                  <span>GitHub</span>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <img src="/statics/images/linkedin.png" alt="LinkedIn icon" class="linkedin-icon">
+                  <span>LinkedIn</span>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <img src="/statics/images/animal.png" alt="School icon" class="school-icon">
+                  <span>Holberton School</span>
+              </a>
+          </li>
+      </ul>
+  </div>
+  <div class="legacy">
+      <p>&copy; 2025 GreenDeals. Tous droits réservés. Créé à <a href="https://www.holbertonschool.com" target="_blank">Holberton School</a>.</p>
+  </div>
+  <div class="navigation-footer">
+      <ul>
+          <li>
+              <a href="#">
+                  <span>Home</span>
+                  <img src="/statics/images/home.png" alt="GitHub icon" class="github-icon">
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <span>Contacts</span>
+                  <img src="/statics/images/phone-book.png" alt="GitHub icon" class="github-icon">
+              </a>
+          </li>
+
+          <li>
+              <a href="#">
+                  <span>A propos de nous</span>
+                  <img src="/statics/images/id-card.png" alt="GitHub icon" class="github-icon">
+              </a>
+          </li>
+      </ul>
+  </div>
+
+</footer>
 
     <script   src="{{url_for('static', filename='/js/dealsOperation.js')}}" type="module"></script>
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

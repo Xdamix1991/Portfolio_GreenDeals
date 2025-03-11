@@ -22,6 +22,7 @@ main {
     align-items: center;
     padding: 20px;
     overflow-y: auto;
+
 }
 
 header {
@@ -44,9 +45,12 @@ header {
     background: white;
     border-radius: 25px;
     padding: 10px 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
     transition: box-shadow 0.2s ease-in-out;
     height: 50px;  /* hauteur de la logo box */
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 .logo:hover {
@@ -73,6 +77,7 @@ header {
     justify-content: center;
     padding: 10px;
     height: 30px;  /* hauteur de la search bar */
+
 }
 
 #search-form {
@@ -85,6 +90,9 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease-in-out;
     height: 25px;  /*  hauteur de la search form */
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 #search-form:hover {
@@ -127,10 +135,12 @@ header {
     background: white;
     border-radius: 25px;
     padding: 10px 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s ease-in-out;
+
     z-index: 10;
     height: 20px;  /*  hauteur de la navigation */
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 .nav:hover {
@@ -175,24 +185,29 @@ header {
     background: white;
     border-radius: 25px;
     padding: 10px 15px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+
+    height: 30px;  /*  hauteur du bouton de login */
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
     transition: box-shadow 0.2s ease-in-out;
-    height: 35px;  /*  hauteur du bouton de login */
 }
 
 .login button {
-    font-size: 18px;
+    text-decoration: none;
+    background: none;
+    font-size: 20px;
     padding: 8px 15px;
     color: black;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.2s ease-in-out;
-    height: 30px;  /*  hauteur du bouton à l'intérieur de login */
+    height: 25px;  /*  hauteur du bouton à l'intérieur de login */
 }
 
-.login button:hover {
+.login:hover {
     background-color: #ff7100;
 }
 
@@ -206,6 +221,9 @@ header {
     border-radius: 15px;
     font-size: 18px;
     color: #fff;
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 .filters_bar label {
@@ -248,10 +266,15 @@ header {
     margin-top: 20px;
     padding: 20px;
     background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(147, 196, 125, 0) 100%);
-    border-radius: 15px;
+    border-radius: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    border: 5px solid rgb(231, 255, 220);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    transition: box-shadow 0.2s ease-in-out;
+
 }
 
 
@@ -264,6 +287,7 @@ header {
 
     width: 100%;
     max-width: 1300px;
+
 }
 
 .deal_details {
@@ -273,11 +297,13 @@ header {
     padding: 15px;
     gap: 20px;
     background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    border-radius: 40px;
+
     position: relative;
     min-height: 200px; /* Pour garantir une hauteur minimale */
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 .deal_details:hover {
@@ -294,9 +320,9 @@ header {
     align-items: center;
     overflow: hidden;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     transition: transform 0.3s ease-in-out;
 }
 .deal-image img {
@@ -304,6 +330,24 @@ header {
     height: 200px;
     background-color: rgba(36, 41, 35, 0.05);
     border-radius: 25px;
+    box-shadow: 1px -2px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+.deal_details .deal-image .user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(36, 41, 35, 0.05);
+    border-radius: 25px;
+    width: 100px;
+    height: 40px;
+
+}
+.deal-image .user img{
+    width: 25px;
+    height: 25px;
 }
 .deal-image{
     display: flex;
@@ -337,6 +381,8 @@ header {
     font-size: 20px;
     font-weight: bold;
     overflow-y: auto;
+    overflow: hidden;      /* Cache le texte qui dépasse */
+    text-overflow: ellipsis; /* Ajoute "..." à la fin */
 
     color: #333;
     margin-bottom: 5px;
@@ -373,7 +419,9 @@ header {
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-
+.description {
+    white-space: pre-wrap;
+}
 
 .description p {
     margin: 0;
@@ -401,8 +449,15 @@ header {
     padding: 4px 8px;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
 }
 
+.reparability-icon {
+    width:90px;
+    height:30px;
+}
 
 .deal_details .category:hover,
 .deal_details .comment:hover {
@@ -542,21 +597,25 @@ footer p {
     margin: 0;
 }
 
-.navigation-footer ul {
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-}
 
-.contact ul {
+
+ .contact ul {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+.navigation-footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+
+}
+
 
 .contact ul li a,
 .navigation-footer ul li a {
-    color: #0c0b0b;
+    color: black;
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
@@ -565,13 +624,41 @@ footer p {
 
     border-radius: 25px;
     transition: all 0.3s ease; /* adoucir l'effet hover */
+
 }
 
-.contact ul li a:hover,
-.navigation-footer ul li a:hover {
-    color: #fff;
-    background-color: #0c0b0b;
-    border-color: #fff;
+.navigation-footer ul li, .contact ul li {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 25px;
+    padding: 10px;
+    width: max-content;
+    height: 20px;
+    overflow: hidden; /* Évite tout débordement */
+    transition: transform 0.3s ease-in-out; /* Animation fluide */
+    
+}
+
+.navigation-footer ul li a, .contact ul li a {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacement entre l'icône et le texte */
+    transition: transform 0.3s ease-in-out;
+}
+
+.navigation-footer ul li:hover a, .contact ul li:hover a {
+    transform: translateX(10px); /* Décale doucement vers la droite */
+}
+
+.navigation-footer ul li:hover ,.contact ul li:hover {
+    background-color: #e66000;
+}
+footer img.github-icon,
+footer img.linkedin-icon,
+footer img.school-icon {
+    width: 30px;
+    height: 30px;
 }
 
 /* === MEDIA QUERIES === */
@@ -645,9 +732,7 @@ footer p {
         font-size: 16px;
     }
 
-    .deal_container {
-        grid-template-columns: 1fr;
-    }
+
 
     footer {
         display: flex;
@@ -657,6 +742,9 @@ footer p {
         padding: 15px;
     }
 
+    .d-details {
+        grid-template-columns: 1fr;
+    }
     footer p {
         font-size: 14px;
     }
@@ -676,4 +764,7 @@ footer p {
         text-align: center;
     }
 }
+
+/* === MEDIA QUERIES === */
+
 
