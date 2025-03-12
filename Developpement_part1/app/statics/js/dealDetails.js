@@ -9,6 +9,11 @@ const deal_id = localStorage.getItem('dealID');
 
 async function fetchDeal() {
   try {
+    const userData = localStorage.getItem('userData');
+    if (!userData) {
+      window.location.href = '/login';
+      return;
+    }
     const deal = await dealService.getById(deal_id);
     if (deal) {
       console.log('deal:', deal);
@@ -212,6 +217,7 @@ async function addComment() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  
   fetchDeal();
   addComment();
 });

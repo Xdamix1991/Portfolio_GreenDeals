@@ -47,6 +47,50 @@
 	<main>
 
 
+        <section class="about_me">
+            <img src="{{ url_for('static', filename='images/moi.jpg') }}" alt="Photo de Lamine">
+            <h2>Lamine</h2>
+            <h3>Développeur & Manager de projet</h3>
+            <p>🔹 (Etudiant à Holbertonschool en premiére année fondamentaux de programattion)</p>
+            <div>
+                <ul>
+                    <li>
+                        <a href="#"><img src="{{ url_for('static', filename='images/linkedin.png') }}" alt="LinkedIn"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="{{ url_for('static', filename='images/github.png') }}" alt="GitHub"></a>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="about_app">
+            <h2>Qu'est-ce que GreaDeals ?</h2>
+            <p>application Web collaborative où la communauté partage des offres durables.
+                Les utilisateurs publient des promotions et votent pour évaluer leur pertinence économique ainsi que leur respect de l’environnement.
+                Grâce à ce système participatif, chacun peut découvrir et soutenir des offres alliant pouvoir d’achat et engagement écologique.</p>
+        </section>
+
+        <section class="why_greadeals">
+            <h2>Pourquoi GreaDeals ?</h2>
+            <p> ()</p>
+        </section>
+
+        <section class="contact_me">
+            <h2>Contactez-moi</h2>
+            <form action="#" method="POST">
+                <div class="input-group">
+                    <input type="text" name="nom" placeholder="Votre nom" required>
+                    <input type="text" name="prenom" placeholder="Votre prénom" required>
+                </div>
+                <input type="email" name="email" placeholder="Votre email" required>
+                <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+
+
 
 	</main>
 
@@ -103,8 +147,6 @@
 
     </footer>
 
-    <script src="{{ url_for('static', filename='js/dealfilters.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/login.js')}}"></script>
 
 
 </body>

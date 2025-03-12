@@ -45,12 +45,25 @@
     <main>
         <div class="login-container">
             <div class="logi">
-                <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Enter Email">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter password">
-                <button type="submit" id="loginButton">Login</button>
+                <div>
+                    <p>Sign In</p>
+                </div>
+                <div>
+                    <label for="email"></label>
+                    <input type="text" id="email" placeholder="Enter Email">
+                </div>
+                <div>
+                    <label for="password"></label>
+                    <input type="password" id="password" placeholder="Enter password">
+                </div>
+                <div>
+                    <button type="submit" id="loginButton">Login</button>
+                </div>
             </div>
+            <div class="forgot_password">
+                <p>Forgot password <a href="#">click here</a></p>
+            </div>
+            
             <div class="user_register">
                 <p>Pas encore inscrit <a href="{{ url_for('register') }}">inscription</a></p>
             </div>

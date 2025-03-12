@@ -2,11 +2,11 @@
     display: flex;
     flex-direction: column;
 
-    width: 500px;
-    height: 700px;
+    width: 400px;
+    height: 600px;
     align-items: center;
     background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(147, 196, 125, 0) 100%);
-    justify-content: center;
+    justify-content: space-around;
     padding: 30px;
     border-radius: 40px;
     padding: 25px 35px;
@@ -23,13 +23,30 @@
 .logi {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
+    gap: 40px;
     align-items: center;
 }
+.logi div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
 
+    align-items: center;
+}
+.logi p {
+
+    font-weight: bolder;
+    font-size: 30px;
+
+    color: #000;
+    margin-bottom: 20px;
+}
 .logi input {
-    width: 250px;
-    height: 50px;
+    width: 80%;
     background: white;
     border: none;
     padding: 15px 20px;
@@ -43,16 +60,11 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-.logi label {
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-    margin-top: 20px;
-}
+
 
 .login-container button {
     display: block;
-    width: 100%;
+    width: 221px;
     font-weight: bold;
     background: linear-gradient(45deg, rgb(189, 178, 34) 0%, rgb(18, 177, 209) 100%);
     color: white;
@@ -73,8 +85,9 @@
 
 .user_register {
     margin-top: 30px;
-    font-size: 16px;
-    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
