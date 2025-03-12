@@ -8,7 +8,7 @@ from flask import make_response, jsonify
 
 api = Namespace('logout', description='logout operations')
 
-@api.route('/logout')
+@api.route('/')
 class LogOutResource(Resource):
     @jwt_required()
     def post(self):

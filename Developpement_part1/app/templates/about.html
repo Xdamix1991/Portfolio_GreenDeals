@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/deal.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+
 
     <title>GreenDeals</title>
 </head>
@@ -41,57 +44,13 @@
 
     </header>
 
-    <main>
-
-
-            <form class="filters_bar">
-                <div class="filter-group">
-                    <label for="price">Prix max :</label>
-                        <select id="price" name="price">
-                            <option value="">Tous les prix</option>
-                            <option value="0-50">0 - 50€</option>
-                            <option value="50-100">50 - 100€</option>
-                            <option value="100-200">100 - 200€</option>
-                            <option value="200-500">200 - 500€</option>
-                            <option value="500-1000">500 - 1000€</option>
-                            <option value="1000+">1000€ et plus</option>
-                        </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="category">Catégorie :</label>
-                    <input id="category" type="text" placeholder="categorie">
-                </div>
-
-                <div class="filter-group">
-                    <label for="reparability">Indice de réparabilité min :</label>
-                    <input type="number" id="reparability" name="reparability" min="1" max="10" step="1">
-                </div>
-
-                <button type="submit" class="filter-button">Appliquer les filtres</button>
-            </form>
-
-            <div class="results_bar">
-                <div id="results_bar"></div>
-                </div>
-
-            <div class="deal_filters">
-                <div id="deal_filters">
-
-                </div>
-            </div>
-
-            <h1>Work in Progress</h1>
-            <div class="deals_list">
-                <p>Deals basés sur votre activité</p>
-                <div class="deal_container">
-                    <script src="{{url_for('static', filename='js/deals.js')}}" type="module"></script>
-                </div>
-            </div>
+	<main>
 
 
 
-    </main>
+	</main>
+
+
     <footer>
         <div class="contact">
             <ul>
@@ -143,8 +102,11 @@
         </div>
 
     </footer>
-    <script src="{{ url_for('static', filename='js/dealfilters.js') }}" type="module"></script>
-    <script   src="{{url_for('static', filename='/js/login.js')}}" type="module"></script>
+
+    <script src="{{ url_for('static', filename='js/dealfilters.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/login.js')}}"></script>
+
 
 </body>
+
 </html>

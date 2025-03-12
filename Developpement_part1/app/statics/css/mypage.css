@@ -46,7 +46,7 @@ main h1 {
     align-items: center;
     margin-bottom: 30px;
     border-radius: 40px;
-    background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(147, 196, 125, 0.7) 100%);
+    background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(0, 0, 0, 0) 100%);
     border: 5px solid rgb(255, 255, 255);
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
     transition: box-shadow 0.2s ease-in-out;
@@ -85,6 +85,7 @@ main h1 {
 #dealOptions {
     display: flex;
     justify-content: center;
+
     gap: 15px;
     margin-bottom: 20px;
     width: 100%;
@@ -210,6 +211,7 @@ main h1 {
     font-size: 16px;
     margin: 8px 0;
     color: #444;
+    overflow: hidden;
 }
 
 .delete-button, .update-button {

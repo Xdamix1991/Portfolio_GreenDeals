@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   loginButton.addEventListener('click', function (event) {
       event.preventDefault(); // Empêcher le comportement par défaut du formulaire
 
-      // Récupérer les valeurs des champs
+
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
@@ -55,40 +55,60 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
 document.addEventListener('DOMContentLoaded', function () {
     const loginLink = document.querySelector('.login');
     const loginButton = loginLink.querySelector('button');
     const userData = JSON.parse(localStorage.getItem('userData'));
 
     if (userData) {
+        // Vérifiez si le token est expiré
+        fetch('/api/auth/protected', {
+            method: 'GET',
+            credentials: 'include'
+        })
+        .then(response => {
+            if (!response.ok) {
+                alert('votre session a expiré');
+                throw new Error('Token expiré');
 
-        loginButton.textContent = userData.pseudo;
-        loginLink.href = "#";
-
-
-        loginButton.addEventListener('mouseover', function() {
-            loginButton.textContent = 'Logout';
-        });
-
-
-        loginButton.addEventListener('mouseout', function() {
-            loginButton.textContent = userData.pseudo;
-        });
-
-        loginButton.addEventListener('click', function() {
-            if (loginButton.textContent === 'Logout') {
-                handleLogout();
             }
+            return response.json();
+        })
+        .then(data => {
+            loginButton.textContent = userData.pseudo;
+            loginLink.href = "#";
+
+            loginButton.addEventListener('mouseover', function() {
+                loginButton.textContent = 'Logout';
+            });
+
+            loginButton.addEventListener('mouseout', function() {
+                loginButton.textContent = userData.pseudo;
+            });
+
+            loginButton.addEventListener('click', function() {
+                if (loginButton.textContent === 'Logout') {
+                    handleLogout();
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            handleLogout();
         });
     }
 });
+
+
+
 function handleLogout() {
-    if (confirm('Voulez-vous vraiment vous déconnecter ?')) {
-        fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
+
+        fetch('/api/logout', { method: 'POST', credentials: 'include' })
             .then(() => {
                 localStorage.removeItem('userData');
                 window.location.href = 'home';
             })
             .catch(error => console.error('Erreur de déconnexion:', error));
-    }
+
 }

@@ -4,6 +4,26 @@ html {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+
+   width: 100%;
+  height: 100%;
+  --s: 6em;
+  --d: 0.3em;
+  --bg: #000000;
+  --fg: rgb(60, 133, 31);
+  background-color: var(--bg);
+  background-image: radial-gradient(
+      var(--d) var(--d) at 25% 25%,
+      var(--fg) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      var(--d) var(--d) at 75% 75%,
+      var(--fg) 100%,
+      transparent 100%
+    );
+  background-size: var(--s) calc(var(--s) * 0.577350269);
+
 }
 
 body {
@@ -23,15 +43,16 @@ main {
     padding: 20px;
     overflow-y: auto;
 
+
 }
 
 header {
     background: linear-gradient(to bottom, rgba(147, 196, 125, 1) 0%, rgba(0, 0, 0, 0) 100%);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items:start;
     padding: 15px 25px;
-    height: 200px;  /* hauteur du header */
+    height: 300px;  /* hauteur du header */
     flex-wrap: nowrap;
 }
 
@@ -47,7 +68,7 @@ header {
     padding: 10px 15px;
 
     transition: box-shadow 0.2s ease-in-out;
-    height: 50px;  /* hauteur de la logo box */
+    height: 30px;  /* hauteur de la logo box */
     border: 5px solid rgb(255, 255, 255);
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
     transition: box-shadow 0.2s ease-in-out;
@@ -67,7 +88,7 @@ header {
 
 .search_and_nav{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 25px;
@@ -79,7 +100,11 @@ header {
     height: 30px;  /* hauteur de la search bar */
 
 }
-
+.login_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #search-form {
     display: flex;
     align-items: center;
@@ -174,10 +199,9 @@ header {
     background: #ff7100;
     color: white;
 }
-
-/* === FIN NAVIGATION === */
-.login {
+.login_div {
     display: flex;
+    flex-direction: row;
     align-items: center;
     font-size: 28px;
     text-decoration: none;
@@ -192,11 +216,27 @@ header {
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
     transition: box-shadow 0.2s ease-in-out;
 }
+.login_div img {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+    border-style: solid;
+    border-radius: 50%;
+}
+/* === FIN NAVIGATION === */
+.login {
+
+    font-size: 28px;
+    text-decoration: none;
+    font-weight: bold;
+
+}
 
 .login button {
     text-decoration: none;
     background: none;
-    font-size: 20px;
+    font-size: 28px;
+    font-weight: bold;
     padding: 8px 15px;
     color: black;
     border: none;
@@ -207,7 +247,7 @@ header {
     height: 25px;  /*  hauteur du bouton à l'intérieur de login */
 }
 
-.login:hover {
+.login_div:hover {
     background-color: #ff7100;
 }
 
@@ -575,11 +615,11 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: end;
-    background: linear-gradient(to top, rgba(147, 196, 125, 1) 0%, rgba(147, 196, 125, 0) 100%), url('../images/basimage.jpg');;
+    background: linear-gradient(to top, rgba(147, 196, 125, 1) 0%, rgba(0, 0, 0, 0) 100%);
     padding: 20px;
     background-size: contain;
     margin-top: auto;
-    height: 400px;
+    height: 300px;
 }
 
 footer p {
@@ -637,7 +677,7 @@ footer p {
     height: 20px;
     overflow: hidden; /* Évite tout débordement */
     transition: transform 0.3s ease-in-out; /* Animation fluide */
-    
+
 }
 
 .navigation-footer ul li a, .contact ul li a {

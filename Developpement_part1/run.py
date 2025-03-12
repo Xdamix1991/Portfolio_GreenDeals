@@ -23,5 +23,9 @@ def register():
 def deal(deal_id):
     return render_template('deal.html', deal_id=deal_id)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
