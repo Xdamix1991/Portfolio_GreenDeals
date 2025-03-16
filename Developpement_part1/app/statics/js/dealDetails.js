@@ -28,6 +28,7 @@ async function fetchDeal() {
   }
 }
 
+
 // Implement your own handleVote function specifically for the detail page
 // if you can't import it properly from deals.js
 export async function detailPageHandleVote(event) {
@@ -217,7 +218,7 @@ async function addComment() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   fetchDeal();
   addComment();
 });

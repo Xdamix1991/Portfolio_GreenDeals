@@ -60,6 +60,8 @@ class DealsResource(Resource):
             data['image'] = None
 
         new_deal = deal_facade.create_deal(**data)
+
+        
         return new_deal.deal_to_dict(), 200
 
 

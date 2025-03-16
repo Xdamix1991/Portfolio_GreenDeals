@@ -10,8 +10,8 @@ async function fetchData(endpoint, method = 'GET', data = null, options = {}) {
       'Content-Type': 'application/json',
       ...(options.headers || {}) // Garde les headers personnalisés
     },
-    credentials: 'include',
-    ...options, // Ajoute les autres options
+    credentials: 'include', // Inclure les cookies dans la requête
+    ...options, // Ajout des autres options si besoins 
   };
 
   if (data && (method === 'POST' || method === 'PUT' || method === 'PATCH')) {
@@ -52,7 +52,7 @@ function createModelService(modelName) {
   };
 }
 
-
+// Création des services FACADE API pour chaque modèle
 export const dealService = createModelService('deals');
 export const userService = createModelService('users');
 export const VoteService = createModelService('votes');

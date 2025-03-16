@@ -9,12 +9,19 @@
     <title>GreenDeals</title>
 </head>
 <body>
+
     <header>
+        <div class="header_top">
         <div class="logo_div">
             <a class="logo" href="{{ url_for('home') }}">
                 <img src="{{ url_for('static', filename='images/portfo.jpg') }}" alt="Logo GreenDeals"> GreenDeals
             </a>
         </div>
+        <div class="login_div">
+            <a class="login" href="{{ url_for('login') }}"><button> Login</button></a>
+            <img src="{{ url_for('static', filename='images/portfo.jpg') }}" alt="Logo GreenDeals">
+        </div>
+    </div>
 
 
         <div class="search_and_nav">
@@ -35,10 +42,6 @@
     </div>
 
 
-        <div class="login_div">
-            <a class="login" href="{{ url_for('login') }}"><button> Login</button></a>
-            <img src="{{ url_for('static', filename='images/portfo.jpg') }}" alt="Logo GreenDeals">
-        </div>
 
     </header>
 
