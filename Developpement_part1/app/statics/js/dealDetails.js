@@ -7,6 +7,33 @@ const containerComment = document.querySelector('.deal_comments');
 
 const deal_id = localStorage.getItem('dealID');
 
+
+//function setupSearchRedirection() {
+  //const searchForm = document.getElementById('search-form');
+
+  //if (searchForm) {
+    // Enlever tous les gestionnaires d'événements existants
+    //const newSearchForm = searchForm.cloneNode(true);
+    //searchForm.parentNode.replaceChild(newSearchForm, searchForm);
+
+    // Ajouter le nouveau gestionnaire d'événements
+    //newSearchForm.addEventListener('submit', function(event) {
+      //event.preventDefault();
+
+      // Récupérer le terme de recherche
+      //const searchTerm = document.getElementById('search-input').value.trim();
+
+      //if (searchTerm) {
+        // Stocker le terme de recherche dans localStorage pour l'utiliser sur la page d'accueil
+        //localStorage.setItem('searchTerm', searchTerm);
+
+        // Rediriger vers la page d'accueil
+        //window.location.href = 'home';
+      //}
+    //});
+  //}
+//}
+
 async function fetchDeal() {
   try {
     const userData = localStorage.getItem('userData');
@@ -29,10 +56,8 @@ async function fetchDeal() {
 }
 
 
-// Implement your own handleVote function specifically for the detail page
-// if you can't import it properly from deals.js
 export async function detailPageHandleVote(event) {
-  // Find the closest button element since event.target might be the image
+
   const button = event.target.closest('.vote-btn');
   if (!button) return; // Exit if we didn't click on a vote button
 
@@ -50,14 +75,13 @@ export async function detailPageHandleVote(event) {
       deal_id: dealId
     };
 
-    // Add the appropriate vote type
     if (voteType === 'green') {
       voteData.green_vote = value;
     } else if (voteType === 'price') {
       voteData.price_vote = value;
     }
 
-    console.log('Sending vote data:', voteData); // Log the data being sent
+    console.log('Sending vote data:', voteData);
 
     const response = await VoteService.create(voteData);
 
@@ -79,12 +103,11 @@ export async function detailPageHandleVote(event) {
   }
 }
 
-// Create a specific setup function for the detail page votes
 function setupDetailPageVoteButtons() {
   const voteButtons = document.querySelectorAll('.vote-btn');
 
   voteButtons.forEach(button => {
-    // First remove any existing event listeners to prevent duplicates
+    // remove any existing event listeners to prevent duplicates
     button.removeEventListener('click', detailPageHandleVote);
     // Add the event listener
     button.addEventListener('click', detailPageHandleVote);

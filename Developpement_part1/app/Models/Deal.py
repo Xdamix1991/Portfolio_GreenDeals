@@ -1,7 +1,7 @@
 from app.Models.Model_base import ModelBase
 from app.Models.queriesextension import VoteMethodes
 from app.Persistence.comment_queries import CommentMethodes
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from app.db_extension import db
 import base64
 
@@ -43,7 +43,9 @@ class Deal(ModelBase):
         return len(self.deal_comments)
 
     def time_since_creation(self):
-        delta = datetime.now() - self.created_at
+        if self.created_at.tzinfo is None:
+            self.created_at = self.created_at.replace(tzinfo=timezone.utc)
+        delta = datetime.now(timezone.utc) - self.created_at
         if delta < timedelta(days=1):
             if delta < timedelta(minutes=1):
                 return "Posté il y a moins d'une minute"

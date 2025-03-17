@@ -68,18 +68,8 @@ class VoteResource(Resource):
                 'price_vote_sum': price_vote_sum,
                 'success': True
             }, 200
+
         else:
-            # Ensure data has valid vote values before creating a new vote
-            if 'green_vote' not in data and 'price_vote' not in data:
-                return {'message': 'Au moins un type de vote est requis', 'success': False}, 400
-
-            # Initialize vote values to 0 if they're not provided
-            if 'green_vote' not in data:
-                data['green_vote'] = 0
-            if 'price_vote' not in data:
-                data['price_vote'] = 0
-
-            # Créer un nouveau vote
             try:
                 new_vote = vote_facade.add_vote(**data)
                 if not new_vote:

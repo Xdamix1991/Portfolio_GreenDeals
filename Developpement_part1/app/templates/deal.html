@@ -49,46 +49,6 @@
 
     <main>
 
-
-            <form class="filters_bar">
-                <div class="filter-group">
-                    <label for="price">Prix max :</label>
-                        <select id="price" name="price">
-                            <option value="">Tous les prix</option>
-                            <option value="0-50">0 - 50€</option>
-                            <option value="50-100">50 - 100€</option>
-                            <option value="100-200">100 - 200€</option>
-                            <option value="200-500">200 - 500€</option>
-                            <option value="500-1000">500 - 1000€</option>
-                            <option value="1000+">1000€ et plus</option>
-                        </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="category">Catégorie :</label>
-                    <input id="category" type="text" placeholder="categorie">
-                </div>
-
-                <div class="filter-group">
-                    <label for="reparability">Indice de réparabilité min :</label>
-                    <input type="number" id="reparability" name="reparability" min="1" max="10" step="1">
-                </div>
-
-                <button type="submit" class="filter-button">Appliquer les filtres</button>
-            </form>
-
-            <div class="results_bar">
-                <div id="results_bar"></div>
-                </div>
-
-            <div class="deal_filters">
-                <div id="deal_filters">
-
-                </div>
-            </div>
-
-            <h1>Work in Progress deal details</h1>
-
             <div class="d_details">
 				<link rel="stylesheet" href="{{ url_for('static', filename='css/deal.css') }}">
                 <div class="deal_elements">

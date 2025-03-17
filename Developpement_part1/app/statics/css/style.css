@@ -46,7 +46,7 @@ header {
 .header_top {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     gap: 15px;
@@ -441,7 +441,7 @@ header {
 .deal_details .description {
     font-size: 14px;
     color: #444;
-    background-color: #f7f7f7;
+    background-color: #e6e2e2;
     border-radius: 8px;
     padding: 12px;
     margin: 10px 0;

@@ -4,6 +4,7 @@ import { dealService, userService, VoteService } from './apiScripts.js';
 
 
 export function displayDeals(deals, container) {
+
     container.innerHTML = deals.map(deal => `
             <div class="deal_details" deal-details="${deal.id}">
         <div class="deal-image">
@@ -100,7 +101,7 @@ export async function handleVote(event) {
             voteData.price_vote = value;
         }
 
-        console.log('Sending vote data:', voteData); // Log the data being sent
+        console.log('Sending vote data:', voteData); // debugging
 
         const response = await VoteService.create(voteData);
 
@@ -125,11 +126,20 @@ export async function handleVote(event) {
 async function fetchDeals() {
     const dealsContainer = document.querySelector('.deal_container');
     if (!dealsContainer) return;
+
     try {
         const deals = await dealService.getAll();
         if (deals) {
             displayDeals(deals, dealsContainer);
 
+            // Vérifier si l'un des conteneurs de filtres ou de recherche est déjà visible
+            const dealFilterContainer = document.getElementById('deal_filters');
+            const barResearchContainer = document.getElementById('results_bar');
+
+            if ((dealFilterContainer && dealFilterContainer.style.display !== 'none') ||
+                (barResearchContainer && barResearchContainer.style.display !== 'none')) {
+                dealsContainer.style.display = 'none';
+            }
         }
     } catch (error) {
         console.error('Erreur lors de la récupération des deals:', error);
